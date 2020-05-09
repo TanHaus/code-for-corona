@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Grid, Button, Fade } from "@material-ui/core";
 import { Card, CardContent, CardActionArea, CardMedia, CardActions, IconButton } from "@material-ui/core";
 import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
@@ -70,6 +70,9 @@ function DayCard(props) {
 
 function NewDay(props) {
   const classes = useStyles();
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
   
   return (
     <Fade in={true} timeout={1000}>
