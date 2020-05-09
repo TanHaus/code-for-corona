@@ -1,11 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Grid, Button } from "@material-ui/core";
+import { Grid, Button, Fade } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
  
 
 function EntryPoint(props) {
     return (
+        <Fade in="true">
         <Grid 
             container
             direction="column"
@@ -20,6 +21,7 @@ function EntryPoint(props) {
             </Grid>
             
         </Grid>
+        </Fade>
     );
 }
 
