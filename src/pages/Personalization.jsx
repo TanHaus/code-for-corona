@@ -9,7 +9,6 @@ const useStyles = makeStyles({
         flexGrow: 1,
     },
     item: {
-        // padding: '20px auto',
         margin: '20px auto',
     },
     square: {
@@ -26,15 +25,8 @@ const useStyles = makeStyles({
 
 function Personalization(props) {
     const classes = useStyles();
-    const cookDish = JSON.parse(localStorage.getItem("cookDish"));
-    const watchMovie = JSON.parse(localStorage.getItem("watchMovie"));
-    const readBook = JSON.parse(localStorage.getItem("readBook"));
-    const workOut = JSON.parse(localStorage.getItem("workOut"));
-    const learnOnline = JSON.parse(localStorage.getItem("learnOnline"));
-    const cleanRoom = JSON.parse(localStorage.getItem("cleanRoom"));
-    const chatFnF = JSON.parse(localStorage.getItem("chatFnF"));
-    const donate = JSON.parse(localStorage.getItem("donate"));
-    const volunteer = JSON.parse(localStorage.getItem("volunteer"));
+    const activities = JSON.parse(localStorage.getItem("activities"));
+    const {cookDish, watchMovie, readBook, workOut, learnOnline, cleanRoom, chatFnF, donate, volunteer} = activities;
 
     return (
         <Fade in="true">
@@ -50,9 +42,9 @@ function Personalization(props) {
             {cookDish ? <div>
                 <Grid item className={classes.item}>
                     <h2>I want to cook ....</h2>
-                    <LearnOption text="Asian cuisine"></LearnOption>
-                    <LearnOption text="Western cuisine"></LearnOption>
-                    <LearnOption text="Anything. Surprise me!"></LearnOption>
+                    <OptionCard text="Asian cuisine" />
+                    <OptionCard text="Western cuisine" />
+                    <OptionCard text="Anything. Surprise me!" />
                 </Grid>
                 <Grid item className={classes.item}>
                     <h2>Dishes that I want to cook are similar to ...</h2>
@@ -117,7 +109,7 @@ function OptionCard(props) {
                         alignItems="center"
                     >
                         <p style={{
-                            color: activity ? "#FFFFFF" : "#000000" 
+                            color: option ? "#FFFFFF" : "#000000" 
                         }}>
                             {name}
                         </p>
