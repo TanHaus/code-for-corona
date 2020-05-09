@@ -18,15 +18,15 @@ const useStyles = makeStyles({
 
 function Personalization(props) {
     const classes = useStyles();
-    const cookDish = JSON.parse(localStorage.getItem("cookDish"));
-    const watchMovie = JSON.parse(localStorage.getItem("watchMovie"));
-    const readBook = JSON.parse(localStorage.getItem("readBook"));
-    const workOut = JSON.parse(localStorage.getItem("workOut"));
+    const cookDish =    JSON.parse(localStorage.getItem("cookDish"));
+    const watchMovie =  JSON.parse(localStorage.getItem("watchMovie"));
+    const readBook =    JSON.parse(localStorage.getItem("readBook"));
+    const workOut =     JSON.parse(localStorage.getItem("workOut"));
     const learnOnline = JSON.parse(localStorage.getItem("learnOnline"));
-    const cleanRoom = JSON.parse(localStorage.getItem("cleanRoom"));
-    const chatFnF = JSON.parse(localStorage.getItem("chatFnF"));
-    const donate = JSON.parse(localStorage.getItem("donate"));
-    const volunteer = JSON.parse(localStorage.getItem("volunteer"));
+    const cleanRoom =   JSON.parse(localStorage.getItem("cleanRoom"));
+    const chatFnF =     JSON.parse(localStorage.getItem("chatFnF"));
+    const donate =      JSON.parse(localStorage.getItem("donate"));
+    const volunteer =   JSON.parse(localStorage.getItem("volunteer"));
 
     return (
         <Fade in={true} timeout={1000}>
@@ -56,6 +56,23 @@ function Personalization(props) {
                 </Grid>
             </div> : <div />
             }
+            {watchMovie ? <div>
+                <Grid item className={classes.item}>
+                    <h2>I want to watch ....</h2>
+                    <BigOption text="Fiction & Thriller"></BigOption>
+                    <BigOption text="Comedy"></BigOption>
+                    <BigOption text="Horror"></BigOption>
+                </Grid>
+                <Grid item className={classes.item}>
+                    <h2>My favourite movies are ...</h2>
+                    <Grid container space={5}>
+                        <SmallOption text="Web Development"></SmallOption>
+                        <SmallOption text="Contemporary Art"></SmallOption>
+                        <SmallOption text="Microeconomics"></SmallOption>
+                    </Grid>
+                </Grid>
+            </div> : <div />
+            }
             {learnOnline ? <div>
                 <Grid item className={classes.item}>
                     <h2>I want to learn ....</h2>
@@ -73,6 +90,29 @@ function Personalization(props) {
                 </Grid>
             </div> : <div />
             }
+            {learnOnline ? <div>
+                <Grid item className={classes.item}>
+                    <h2>I want to learn ....</h2>
+                    <BigOption text="Science & Mathematics"></BigOption>
+                    <BigOption text="Arts & Humanities"></BigOption>
+                    <BigOption text="Anything. Surprise me!"></BigOption>
+                </Grid>
+                <Grid item className={classes.item}>
+                    <h2>Dishes that I want to cook are similar to ...</h2>
+                    {/* <Grid container space={5}>
+                        <SmallOption text="Web Development"></SmallOption>
+                        <SmallOption text="Contemporary Art"></SmallOption>
+                        <SmallOption text="Microeconomics"></SmallOption>
+                    </Grid> */}
+                    <SmallOptionBoard
+                        items={["Web Development",
+                                "Contemporary Art",
+                                "Microeconomics"]}>
+                    </SmallOptionBoard>
+                </Grid>
+            </div> : <div />
+            }
+
             <Grid item className={classes.item}>
                 <Button component={Link} to="/start-day">Confirm</Button>
             </Grid>
@@ -85,24 +125,33 @@ function Personalization(props) {
 function BigOption(props) {
     return (
         <Card>
-            <CardActionArea>
-            <CardContent>
+        <CardActionArea>
+        <CardContent>
             <p>{props.text}</p>
-            </CardContent>
-            </CardActionArea>
+        </CardContent>
+        </CardActionArea>
         </Card>
     )
 }
 
-function SmallOption(props) {
+function SmallOptionBoard(props) {
+    return (
+        <Grid container>
+        { props.items.map(item => {
+            return (<SmallOption text={item}></SmallOption>)
+        }) }
+        </Grid>
+    )
+}
 
+function SmallOption(props) {
     return (
         <Card>
-            <CardActionArea>
-            <CardContent>
+        <CardActionArea>
+        <CardContent>
             <p>{props.text}</p>
-            </CardContent>
-            </CardActionArea>
+        </CardContent>
+        </CardActionArea>
         </Card>
     )
 }
