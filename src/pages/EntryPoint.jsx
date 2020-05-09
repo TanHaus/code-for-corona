@@ -25,12 +25,17 @@ function EntryPoint(props) {
             justify="center"
             alignItems="center"
         >   
+            <Fade in={true} timeout={2000}>
             <Grid item className={classes.bigItem}>
                 <h1>Seeking to be inspired during Circuit Breaker?</h1>
             </Grid>
+            </Fade>
+
+            <Fade in={true} timeout={2000} style={{ transitionDelay: 1500}}>
             <Grid item className={classes.bigItem}>
                 <Button component={Link} to="/choose-activities">Let's get started</Button>
             </Grid>
+            </Fade>
             
         </Grid>
         </Fade>

@@ -29,7 +29,7 @@ function Personalization(props) {
     const {cookDish, watchMovie, readBook, workOut, learnOnline, cleanRoom, chatFnF, donate, volunteer} = activities;
 
     return (
-        <Fade in="true">
+        <Fade in={true} timeout={1000}>
         <Grid 
             container
             direction="column"
@@ -42,16 +42,16 @@ function Personalization(props) {
             {cookDish ? <div>
                 <Grid item className={classes.item}>
                     <h2>I want to cook ....</h2>
-                    <OptionCard text="Asian cuisine" />
-                    <OptionCard text="Western cuisine" />
-                    <OptionCard text="Anything. Surprise me!" />
+                    <BigOption text="Asian cuisine" />
+                    <BigOption text="Western cuisine" />
+                    <BigOption text="Anything. Surprise me!" />
                 </Grid>
                 <Grid item className={classes.item}>
                     <h2>Dishes that I want to cook are similar to ...</h2>
                     <Grid container space={5}>
-                        <SquareOption text="Pho"></SquareOption>
-                        <SquareOption text="Kway Teow"></SquareOption>
-                        <SquareOption text="Bibimbap"></SquareOption>
+                        <SmallOption text="Pho" />
+                        <SmallOption text="Kway Teow" />
+                        <SmallOption text="Bibimbap" />
                     </Grid>
                 </Grid>
             </div> : <div />
@@ -59,16 +59,16 @@ function Personalization(props) {
             {learnOnline ? <div>
                 <Grid item className={classes.item}>
                     <h2>I want to learn ....</h2>
-                    <OptionCard text="Science & Mathematics" />
-                    <OptionCard text="Arts & Humanities" />
-                    <OptionCard text="Anything. Surprise me!" />
+                    <BigOption text="Science & Mathematics" />
+                    <BigOption text="Arts & Humanities" />
+                    <BigOption text="Anything. Surprise me!" />
                 </Grid>
                 <Grid item className={classes.item}>
                     <h2>Dishes that I want to cook are similar to ...</h2>
                     <Grid container space={5}>
-                        <SquareOption text="Web Development"></SquareOption>
-                        <SquareOption text="Contemporary Art"></SquareOption>
-                        <SquareOption text="Microeconomics"></SquareOption>
+                        <SmallOption text="Web Development" />
+                        <SmallOption text="Contemporary Art" />
+                        <SmallOption text="Microeconomics" />
                     </Grid>
                 </Grid>
             </div> : <div />
@@ -82,10 +82,9 @@ function Personalization(props) {
     );
 }
 
-function OptionCard(props) {
+function BigOption(props) {
     const classes = useStyles();
-    const { name, pic, option, setOption } = props;
-
+    const { name, pic, option, setOption } = props;    
     return (
     <Card
         container
@@ -121,7 +120,7 @@ function OptionCard(props) {
     )
 }
 
-function SquareOption(props) {
+function SmallOption(props) {
 
     return (
         <Card>
