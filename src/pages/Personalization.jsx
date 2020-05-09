@@ -56,6 +56,23 @@ function Personalization(props) {
                 </Grid>
             </div> : <div />
             }
+            {watchMovie ? <div>
+                <Grid item className={classes.item}>
+                    <h2>I want to watch ....</h2>
+                    <BigOption text="Fiction & Thriller"></BigOption>
+                    <BigOption text="Comedy"></BigOption>
+                    <BigOption text="Horror"></BigOption>
+                </Grid>
+                <Grid item className={classes.item}>
+                    <h2>My favourite movies are ...</h2>
+                    <Grid container space={5}>
+                        <SmallOption text="Web Development"></SmallOption>
+                        <SmallOption text="Contemporary Art"></SmallOption>
+                        <SmallOption text="Microeconomics"></SmallOption>
+                    </Grid>
+                </Grid>
+            </div> : <div />
+            }
             {learnOnline ? <div>
                 <Grid item className={classes.item}>
                     <h2>I want to learn ....</h2>
@@ -73,6 +90,29 @@ function Personalization(props) {
                 </Grid>
             </div> : <div />
             }
+            {learnOnline ? <div>
+                <Grid item className={classes.item}>
+                    <h2>I want to learn ....</h2>
+                    <BigOption text="Science & Mathematics"></BigOption>
+                    <BigOption text="Arts & Humanities"></BigOption>
+                    <BigOption text="Anything. Surprise me!"></BigOption>
+                </Grid>
+                <Grid item className={classes.item}>
+                    <h2>Dishes that I want to cook are similar to ...</h2>
+                    {/* <Grid container space={5}>
+                        <SmallOption text="Web Development"></SmallOption>
+                        <SmallOption text="Contemporary Art"></SmallOption>
+                        <SmallOption text="Microeconomics"></SmallOption>
+                    </Grid> */}
+                    <SmallOptionBoard
+                        items={["Web Development",
+                                "Contemporary Art",
+                                "Microeconomics"]}>
+                    </SmallOptionBoard>
+                </Grid>
+            </div> : <div />
+            }
+
             <Grid item className={classes.item}>
                 <Button component={Link} to="/start-day">Confirm</Button>
             </Grid>
@@ -120,15 +160,24 @@ function BigOption(props) {
     )
 }
 
-function SmallOption(props) {
+function SmallOptionBoard(props) {
+    return (
+        <Grid container>
+        { props.items.map(item => {
+            return (<SmallOption text={item}></SmallOption>)
+        }) }
+        </Grid>
+    )
+}
 
+function SmallOption(props) {
     return (
         <Card>
-            <CardActionArea>
-            <CardContent>
+        <CardActionArea>
+        <CardContent>
             <p>{props.text}</p>
-            </CardContent>
-            </CardActionArea>
+        </CardContent>
+        </CardActionArea>
         </Card>
     )
 }
