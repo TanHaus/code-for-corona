@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, Button, Fade } from "@material-ui/core";
+import { Grid, Button, ButtonBase, Fade } from "@material-ui/core";
 import { Card, CardContent, CardActionArea } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
@@ -13,20 +13,20 @@ const useStyles = makeStyles({
     },
     square: {
         
-    }
+    },
+    card: {
+        minWidth: 340,
+        maxWidth: 380,
+        margin: '20px auto',
+        minHeight: 140,
+        maxHeight: 160
+      },
 })
 
 function Personalization(props) {
     const classes = useStyles();
-    const cookDish =    JSON.parse(localStorage.getItem("cookDish"));
-    const watchMovie =  JSON.parse(localStorage.getItem("watchMovie"));
-    const readBook =    JSON.parse(localStorage.getItem("readBook"));
-    const workOut =     JSON.parse(localStorage.getItem("workOut"));
-    const learnOnline = JSON.parse(localStorage.getItem("learnOnline"));
-    const cleanRoom =   JSON.parse(localStorage.getItem("cleanRoom"));
-    const chatFnF =     JSON.parse(localStorage.getItem("chatFnF"));
-    const donate =      JSON.parse(localStorage.getItem("donate"));
-    const volunteer =   JSON.parse(localStorage.getItem("volunteer"));
+    const activities = JSON.parse(localStorage.getItem("activities"));
+    const {cookDish, watchMovie, readBook, workOut, learnOnline, cleanRoom, chatFnF, donate, volunteer} = activities;
 
     return (
         <Fade in={true} timeout={1000}>
@@ -42,16 +42,16 @@ function Personalization(props) {
             {cookDish ? <div>
                 <Grid item className={classes.item}>
                     <h2>I want to cook ....</h2>
-                    <BigOption text="Asian cuisine"></BigOption>
-                    <BigOption text="Western cuisine"></BigOption>
-                    <BigOption text="Anything. Surprise me!"></BigOption>
+                    <BigOption text="Asian cuisine" />
+                    <BigOption text="Western cuisine" />
+                    <BigOption text="Anything. Surprise me!" />
                 </Grid>
                 <Grid item className={classes.item}>
                     <h2>Dishes that I want to cook are similar to ...</h2>
                     <Grid container space={5}>
-                        <SmallOption text="Pho"></SmallOption>
-                        <SmallOption text="Kway Teow"></SmallOption>
-                        <SmallOption text="Bibimbap"></SmallOption>
+                        <SmallOption text="Pho" />
+                        <SmallOption text="Kway Teow" />
+                        <SmallOption text="Bibimbap" />
                     </Grid>
                 </Grid>
             </div> : <div />
@@ -76,16 +76,16 @@ function Personalization(props) {
             {learnOnline ? <div>
                 <Grid item className={classes.item}>
                     <h2>I want to learn ....</h2>
-                    <BigOption text="Science & Mathematics"></BigOption>
-                    <BigOption text="Arts & Humanities"></BigOption>
-                    <BigOption text="Anything. Surprise me!"></BigOption>
+                    <BigOption text="Science & Mathematics" />
+                    <BigOption text="Arts & Humanities" />
+                    <BigOption text="Anything. Surprise me!" />
                 </Grid>
                 <Grid item className={classes.item}>
                     <h2>Dishes that I want to cook are similar to ...</h2>
                     <Grid container space={5}>
-                        <SmallOption text="Web Development"></SmallOption>
-                        <SmallOption text="Contemporary Art"></SmallOption>
-                        <SmallOption text="Microeconomics"></SmallOption>
+                        <SmallOption text="Web Development" />
+                        <SmallOption text="Contemporary Art" />
+                        <SmallOption text="Microeconomics" />
                     </Grid>
                 </Grid>
             </div> : <div />
@@ -123,14 +123,40 @@ function Personalization(props) {
 }
 
 function BigOption(props) {
+    const classes = useStyles();
+    const { name, pic, option, setOption } = props;    
     return (
-        <Card>
-        <CardActionArea>
-        <CardContent>
-            <p>{props.text}</p>
-        </CardContent>
-        </CardActionArea>
-        </Card>
+    <Card
+        container
+        xs={12}
+        className={classes.card}
+        style={{
+            backgroundColor: option ? "#AAAAAA" : "#FFFFFF"
+        }}
+    >
+        <ButtonBase 
+            xs={12}
+            className={classes.buttonBase}
+            onClick={e => setOption(!option)}
+        >
+            <CardActionArea>
+                <CardContent>
+                    <Grid
+                        container
+                        direction="column"
+                        justify="center"
+                        alignItems="center"
+                    >
+                        <p style={{
+                            color: option ? "#FFFFFF" : "#000000" 
+                        }}>
+                            {name}
+                        </p>
+                    </Grid>
+                </CardContent>
+            </CardActionArea>
+        </ButtonBase>
+    </Card>
     )
 }
 

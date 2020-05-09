@@ -64,26 +64,20 @@ function ActivityCard(props) {
 
 function Activities() {
   const classes                       = useStyles();
-  const [cookDish, setCookDish]       = useState(false);
-  const [watchMovie, setWatchMovie]   = useState(false);
-  const [readBook, setReadBook]       = useState(false);
-  const [workOut, setWorkOut]         = useState(false);
-  const [learnOnline, setLearnOnline] = useState(false);
-  const [cleanRoom, setCleanRoom]     = useState(false);
-  const [chatFnF, setChatFnF]         = useState(false);
-  const [donate, setDonate]           = useState(false);
-  const [volunteer, setVolunteer]     = useState(false);
+  const activities = JSON.parse(localStorage.getItem("activities"));
+  const [cookDish, setCookDish]       = useState(activities.cookDish);
+  const [watchMovie, setWatchMovie]   = useState(activities.watchMovie);
+  const [readBook, setReadBook]       = useState(activities.readBook);
+  const [workOut, setWorkOut]         = useState(activities.workOut);
+  const [learnOnline, setLearnOnline] = useState(activities.learnOnline);
+  const [cleanRoom, setCleanRoom]     = useState(activities.cleanRoom);
+  const [chatFnF, setChatFnF]         = useState(activities.chatFnF);
+  const [donate, setDonate]           = useState(activities.donate);
+  const [volunteer, setVolunteer]     = useState(activities.volunteer);
 
   const handleSubmitForm = () => {
-    localStorage.setItem("cookDish",    JSON.stringify(cookDish));
-    localStorage.setItem("watchMovie",  JSON.stringify(watchMovie));
-    localStorage.setItem("readBook",    JSON.stringify(readBook));
-    localStorage.setItem("workOut",     JSON.stringify(workOut));
-    localStorage.setItem("learnOnline", JSON.stringify(learnOnline));
-    localStorage.setItem("cleanRoom",   JSON.stringify(cleanRoom));
-    localStorage.setItem("chatFnF",     JSON.stringify(chatFnF));
-    localStorage.setItem("donate",      JSON.stringify(donate));
-    localStorage.setItem("volunteer",   JSON.stringify(volunteer));
+    const activities = {cookDish, watchMovie, readBook, workOut, learnOnline, cleanRoom, chatFnF, donate, volunteer};
+    localStorage.setItem("activities", JSON.stringify(activities));
   }
 
   return (

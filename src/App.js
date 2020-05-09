@@ -18,6 +18,7 @@ function App() {
     
     <Router>
       <Switch>
+        <Route path="/" component={localStorage.getItem("activities") ? Activities : EntryPoint} />
         <Route path="/entry" component={EntryPoint} />
         <Route path="/choose-activities" component={Activities} />
         <Route path="/personalize" component={Personalization} />
