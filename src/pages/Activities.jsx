@@ -8,22 +8,25 @@ const useStyles = makeStyles(theme => ({
     margin: '20px auto',
   },
   card: {
-    minWidth: '80vw',
-    maxWidth: '400px',
+    minWidth: 340,
+    maxWidth: 380,
     margin: '20px auto',
   },
   buttonBase: {
-    width: '100%'
+    width: '100%',
+  },
+  media: {
+    height: 250
   },
   illustration: {
     width: 140,
-    margin: '20px auto',
+    margin: 'auto',
   }
 }));
 
 function ActivityCard(props) {
   const classes = useStyles();
-  const { text, activity, setActivity } = props;
+  const { name, activity, setActivity } = props;
   const pic = props.pic || images.deafault;
   return (
     <Card
@@ -42,19 +45,26 @@ function ActivityCard(props) {
     <CardActionArea>
       <CardMedia 
         component="img"
-        alt={text}
+        alt={name}
         height="140"
         width="140"
         image={pic}
-        title={text}
+        title={name}
         className={classes.illustration}
       />
     <CardContent>
-      <p style={{
-          color: activity ? "#FFFFFF" : "#000000" 
-      }}>
-          {text}
-      </p>
+      <Grid
+        container
+        direction="column"
+        justify="center"
+        alignItems="center"
+      >
+        <p style={{
+            color: activity ? "#FFFFFF" : "#000000" 
+        }}>
+            {name}
+        </p>
+      </Grid>
     </CardContent>
       </CardActionArea>
     </ButtonBase>
@@ -81,7 +91,7 @@ function Activities() {
   }
 
   return (
-    <Fade in={true} timeout={1000}>
+    <Fade in="true">
     <Grid 
       container
       direction="column"
@@ -94,21 +104,21 @@ function Activities() {
       </Grid>
       <Grid item className={classes.item}>
         <h2>Leisure</h2>
-        <ActivityCard text="Cook a dish"   activity={cookDish}   setActivity={setCookDish}   pic={images.cookDish} />
-        <ActivityCard text="Watch a movie" activity={watchMovie} setActivity={setWatchMovie} pic={images.popcorn}  />
-        <ActivityCard text="Read a book"   activity={readBook}   setActivity={setReadBook}   pic={images.book} />
+        <ActivityCard name="Cook a dish"   activity={cookDish}   setActivity={setCookDish}   pic={images.cookDish} />
+        <ActivityCard name="Watch a movie" activity={watchMovie} setActivity={setWatchMovie} pic={images.popcorn}  />
+        <ActivityCard name="Read a book"   activity={readBook}   setActivity={setReadBook}   pic={images.book} />
       </Grid>
       <Grid item className={classes.item}>
         <h2>Self-improvement</h2>
-        <ActivityCard text="Do a workout"              activity={workOut}     setActivity={setWorkOut}     pic={images.dumbbell}/>
-        <ActivityCard text="Take a free online course" activity={learnOnline} setActivity={setLearnOnline} pic={images.eLearnring}/>
-        <ActivityCard text="Clean your room"           activity={cleanRoom}   setActivity={setCleanRoom}   pic={images.broom}/>
+        <ActivityCard name="Do a workout"              activity={workOut}     setActivity={setWorkOut}     pic={images.dumbbell}/>
+        <ActivityCard name="Take a free online course" activity={learnOnline} setActivity={setLearnOnline} pic={images.eLearnring}/>
+        <ActivityCard name="Clean your room"           activity={cleanRoom}   setActivity={setCleanRoom}   pic={images.broom}/>
       </Grid>
       <Grid item className={classes.item}>
         <h2>Human Interaction</h2>
-        <ActivityCard text="Have a chat with family and friends" activity={chatFnF}   setActivity={setChatFnF}   pic={images.chat} />
-        <ActivityCard text="Make a donation"                     activity={donate}    setActivity={setDonate}    pic={images.donation} />
-        <ActivityCard text="Volunteer"                           activity={volunteer} setActivity={setVolunteer} pic={images.volunteer} />
+        <ActivityCard name="Have a chat with family and friends" activity={chatFnF}   setActivity={setChatFnF}   pic={images.chat} />
+        <ActivityCard name="Make a donation"                     activity={donate}    setActivity={setDonate}    pic={images.donation} />
+        <ActivityCard name="Volunteer"                           activity={volunteer} setActivity={setVolunteer} pic={images.volunteer} />
       </Grid>
       <Grid item className={classes.item}>
         <Button

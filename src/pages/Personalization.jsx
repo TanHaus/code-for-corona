@@ -26,7 +26,7 @@ const useStyles = makeStyles({
 function Personalization(props) {
     const classes = useStyles();
     const activities = JSON.parse(localStorage.getItem("activities"));
-    const {cookDish, watchMovie, readBook, workOut, learnOnline, cleanRoom, chatFnF, donate, volunteer} = activities;
+    const { cookDish, watchMovie, readBook, workOut, learnOnline, cleanRoom, chatFnF, donate, volunteer } = activities;
 
     return (
         <Fade in={true} timeout={1000}>
@@ -59,16 +59,16 @@ function Personalization(props) {
             {watchMovie ? <div>
                 <Grid item className={classes.item}>
                     <h2>I want to watch ....</h2>
-                    <BigOption text="Fiction & Thriller"></BigOption>
-                    <BigOption text="Comedy"></BigOption>
-                    <BigOption text="Horror"></BigOption>
+                    <BigOption text="Fiction & Thriller" />
+                    <BigOption text="Comedy" />
+                    <BigOption text="Horror" />
                 </Grid>
                 <Grid item className={classes.item}>
                     <h2>My favourite movies are ...</h2>
                     <Grid container space={5}>
-                        <SmallOption text="Web Development"></SmallOption>
-                        <SmallOption text="Contemporary Art"></SmallOption>
-                        <SmallOption text="Microeconomics"></SmallOption>
+                        <SmallOption text="Web Development" />
+                        <SmallOption text="Contemporary Art" />
+                        <SmallOption text="Microeconomics" />
                     </Grid>
                 </Grid>
             </div> : <div />
@@ -93,9 +93,9 @@ function Personalization(props) {
             {learnOnline ? <div>
                 <Grid item className={classes.item}>
                     <h2>I want to learn ....</h2>
-                    <BigOption text="Science & Mathematics"></BigOption>
-                    <BigOption text="Arts & Humanities"></BigOption>
-                    <BigOption text="Anything. Surprise me!"></BigOption>
+                    <BigOption text="Science & Mathematics" />
+                    <BigOption text="Arts & Humanities" />
+                    <BigOption text="Anything. Surprise me!" />
                 </Grid>
                 <Grid item className={classes.item}>
                     <h2>Dishes that I want to cook are similar to ...</h2>
