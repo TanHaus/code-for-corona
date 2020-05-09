@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Grid, Button, Fade } from "@material-ui/core";
-import { Card, CardContent, CardActionArea, CardMedia, CardActions, IconButton } from "@material-ui/core";
+import { Grid, Button, Fade, Collapse } from "@material-ui/core";
+import { Card, CardContent, CardActionArea, CardMedia, CardActions, IconButton, ButtonBase } from "@material-ui/core";
 import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import SkipNextIcon from '@material-ui/icons/SkipNext';
@@ -96,9 +96,11 @@ function DayCard(props) {
 
 function NewDay(props) {
   const classes = useStyles();
-  useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
+  const [bibimbap, setBibimbap] = useState(false);
+  const [ml, setMl] = useState(false);
+  // useEffect(() => {
+  //   window.scrollTo(0, 0)
+  // }, [])
   
   return (
     <Fade in={true} timeout={1000}>
@@ -119,26 +121,38 @@ function NewDay(props) {
           <Grid item className={classes.item}>
             <Card className={classes.card}>
               <CardActionArea>
+                <ButtonBase onClick={_ => setBibimbap(!bibimbap)} style={{width: '100%'}}>
                 <CardContent>
                   <p>Make Bibimbap</p>
                 </CardContent>
-                <CardMedia
-                  component="img"
-                  image={images.bibimbap} 
-                />
+                </ButtonBase>
               </CardActionArea>
-                <CardActions>
-                  <a href="https://www.allrecipes.com/recipe/228240/bibimbap-korean-rice-with-mixed-vegetables/" target="_blank">
-                  <Button size="small">
-                    Recipe
-                  </Button>
-                  </a>
-                  <a href="https://www.youtube.com/watch?v=lqUtV6lT1n4" target="_blank">
-                  <Button size="small">
-                    Watch video demo
-                  </Button>
-                  </a>
-                </CardActions>
+
+              <Collapse in={bibimbap} timeout={1000}><Fade in={bibimbap} timeout={1000} style={{ transitionDelay: 200}}>
+              <div>
+              <CardMedia
+                component="img"
+                image={images.bibimbap} 
+              />
+              <CardActions>
+                <a href="https://www.allrecipes.com/recipe/228240/bibimbap-korean-rice-with-mixed-vegetables/" target="_blank" rel="noopener noreferrer">
+                <Button size="small">
+                  Recipe
+                </Button>
+                </a>
+                <a href="https://www.youtube.com/watch?v=lqUtV6lT1n4" target="_blank" rel="noopener noreferrer">
+                <Button size="small">
+                  Watch video demo
+                </Button>
+                </a>
+              </CardActions>
+              </div>
+  
+              </Fade></Collapse>
+              
+
+
+              
             </Card>
           </Grid>
           <Grid item className={classes.item}>
@@ -147,7 +161,7 @@ function NewDay(props) {
                       <CardContent className={classes.content}>
                           {/* <p>Serial Killer</p>
                           <p>Lana Del Rey</p> */}
-                          <iframe src="https://open.spotify.com/embed/track/0pYacDCZuRhcrwGUA5nTBe" width="100%" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                          <iframe src="https://open.spotify.com/embed/track/0pYacDCZuRhcrwGUA5nTBe" title="spotify" width="100%" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
                       </CardContent>
                       {/* <div className={classes.controls}>
                           <IconButton aria-label="previous">
@@ -161,7 +175,7 @@ function NewDay(props) {
                           </IconButton>
                       </div> */}
                       <CardActions>
-                      <a href="spotify:track:0pYacDCZuRhcrwGUA5nTBe" target='_blank' >
+                      <a href="spotify:track:0pYacDCZuRhcrwGUA5nTBe" target='_blank' rel="noopener noreferrer">
                       <Button size="small">
                         Listen on Spotify
                       </Button>
@@ -179,22 +193,31 @@ function NewDay(props) {
           <Grid item className={classes.item}>
               <Card className={classes.card}>
                   <CardActionArea>
-                      <CardContent>
-                          <p>Learn Machine Learning</p>
-                      </CardContent>
-                      <CardMedia
-                        component="img"
-                        image={images.webdev} 
-                      />
-                  </CardActionArea>
+                  <ButtonBase onClick={_ => setMl(!ml)} style={{width: '100%'}}>
+                  <CardContent>
+                    <p>Learn Machine Learning</p>
+                  </CardContent>
+                  </ButtonBase>
+         
+                  <Collapse in={ml} timeout={1000}><Fade in={ml} timeout={1000} style={{ transitionDelay: 200}}>
+                  <div>
+                    
+                  <CardMedia
+                      component="img"
+                      image={images.webdev} 
+                  />
                   <CardActions>
-                    <a href="https://www.coursera.org/learn/machine-learning" target='_blank' >
+                    <a href="https://www.coursera.org/learn/machine-learning" target='_blank' rel="noopener noreferrer">
                     <Button size="small">
                           Go to Coursera
                     </Button>
                     </a>
-
                   </CardActions>
+                  </div>
+
+                  </Fade></Collapse>
+                  </CardActionArea>
+
               </Card>
           </Grid>
         </Grid>

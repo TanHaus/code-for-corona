@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { Grid, Button, ButtonBase, Fade } from "@material-ui/core";
+import React, { useState, useEffect } from "react";
+import { Grid, Button, ButtonBase, Fade, Collapse } from "@material-ui/core";
 import { Card, CardContent, CardActionArea } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
@@ -27,10 +27,13 @@ const useStyles = makeStyles({
 })
 
 function Personalization(props) {
-  useEffect(_ => { window.scrollTo(0,0); })
+  // useEffect(_ => { window.scrollTo(0,0); })
   const classes = useStyles();
   const activities = JSON.parse(localStorage.getItem("activities"));
   const {cookDish, watchMovie, readBook, workOut, learnOnline, cleanRoom, chatFnF, donate, volunteer} = activities;
+  const [asian, setAsian] = useState(false);
+  const [mooc, setMooc] = useState(false);
+  const [family, setFamily] = useState(false);
 
   return (
     <Fade in={true} timeout={1000}>
@@ -50,10 +53,12 @@ function Personalization(props) {
       {cookDish ? <div>
         <Grid item className={classes.item}>
           <h2>I want to cook ....</h2>
-          <BigOption text="Asian cuisine" />
+          <BigOption text="Asian cuisine" option={asian} setOption={setAsian} />
           <BigOption text="Western cuisine" />
           <BigOption text="Anything. Surprise me!" />
         </Grid>
+
+        <Collapse in={asian} timeout={1000}><Fade in={asian} timeout={1000} style={{ transitionDelay: 200}}>
         <Grid item className={classes.item}>
           <h2>Dishes that I want to cook are similar to ...</h2>
           <SmallOptionBoard items={[
@@ -63,16 +68,20 @@ function Personalization(props) {
           ]}
           ></SmallOptionBoard>
         </Grid>
+        </Fade></Collapse>
+
       </div> : <div />
       }
 
       {learnOnline ? <div>
         <Grid item className={classes.item}>
           <h2>I want to learn ....</h2>
-          <BigOption text="Science & Mathematics"></BigOption>
+          <BigOption text="Science & Mathematics" ></BigOption>
           <BigOption text="Arts & Humanities"></BigOption>
-          <BigOption text="Anything. Surprise me!"></BigOption>
+          <BigOption text="Anything. Surprise me!" option={mooc} setOption={setMooc} ></BigOption>
         </Grid>
+
+        <Collapse in={mooc} timeout={1000}><Fade in={mooc} timeout={1000} style={{ transitionDelay: 200}}>
         <Grid item className={classes.item}>
           <h2>Topics that I want to dive in...</h2>
           <SmallOptionBoard items={[
@@ -82,6 +91,8 @@ function Personalization(props) {
           ]}>
           </SmallOptionBoard>
         </Grid>
+        </Fade></Collapse>
+
       </div> : <div />
       }
 
@@ -105,7 +116,12 @@ function Personalization(props) {
       }
 
       <Grid item className={classes.item}>
-          <Button component={Link} to="/start-day">Confirm</Button>
+          <Button 
+            variant="outlined"
+            component={Link} to="/start-day"
+          >
+            Confirm
+          </Button>
       </Grid>
         
     </Grid>
@@ -139,7 +155,7 @@ function BigOption(props) {
   >
     <ButtonBase 
       className={classes.buttonBase}
-      // onClick={e => setOption(!option)}
+      onClick={e => setOption(!option)}
     >
       <CardActionArea>
         <CardContent>
