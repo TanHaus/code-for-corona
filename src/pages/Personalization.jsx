@@ -3,6 +3,7 @@ import { Grid, Button, ButtonBase, Fade } from "@material-ui/core";
 import { Card, CardContent, CardActionArea } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
+import images from "../res/Asset";
 
 const useStyles = makeStyles({
     root: {
@@ -10,17 +11,19 @@ const useStyles = makeStyles({
     },
     item: {
         margin: '20px auto',
+        width: '80vw',
     },
-    square: {
-        
+    squareContent: {
+        width: '25vw',
+        height: '25vw',
+        padding: 0,
     },
     card: {
-        minWidth: 340,
-        maxWidth: 380,
         margin: '20px auto',
-        minHeight: 140,
-        maxHeight: 160
-      },
+    },
+    buttonBase: {
+        width: '100%',
+    }
 })
 
 function Personalization(props) {
@@ -48,11 +51,12 @@ function Personalization(props) {
                 </Grid>
                 <Grid item className={classes.item}>
                     <h2>Dishes that I want to cook are similar to ...</h2>
-                    <Grid container space={5}>
-                        <SmallOption text="Pho" />
-                        <SmallOption text="Kway Teow" />
-                        <SmallOption text="Bibimbap" />
-                    </Grid>
+                    <SmallOptionBoard items={[
+                        {text: "Pho", image: images.pho},
+                        {text: "Char Kway Teow", image: images.charKwayTeow},
+                        {text: "Bibimbap", image: images.bibimbap},
+                    ]}
+                    ></SmallOptionBoard>
                 </Grid>
             </div> : <div />
             }
@@ -65,11 +69,19 @@ function Personalization(props) {
                 </Grid>
                 <Grid item className={classes.item}>
                     <h2>My favourite movies are ...</h2>
+<<<<<<< HEAD
                     <Grid container space={5}>
                         <SmallOption text="Web Development" />
                         <SmallOption text="Contemporary Art" />
                         <SmallOption text="Microeconomics" />
                     </Grid>
+=======
+                    <SmallOptionBoard items={[
+                        "Simba",
+                        "Bello",
+                    ]}>
+                    </SmallOptionBoard>
+>>>>>>> 5914192725b0535d272e66ecb5201900392d3130
                 </Grid>
             </div> : <div />
             }
@@ -104,10 +116,12 @@ function Personalization(props) {
                         <SmallOption text="Contemporary Art"></SmallOption>
                         <SmallOption text="Microeconomics"></SmallOption>
                     </Grid> */}
-                    <SmallOptionBoard
-                        items={["Web Development",
-                                "Contemporary Art",
-                                "Microeconomics"]}>
+                    <SmallOptionBoard items={[
+                        {text: "Web Development"},
+                        {text: "Contemporary Art"},
+                        {text: "Microeconomics"},
+                        {text: "Con mèo"}
+                    ]}>
                     </SmallOptionBoard>
                 </Grid>
             </div> : <div />
@@ -128,31 +142,24 @@ function BigOption(props) {
     return (
     <Card
         container
-        xs={12}
         className={classes.card}
         style={{
             backgroundColor: option ? "#AAAAAA" : "#FFFFFF"
         }}
     >
         <ButtonBase 
-            xs={12}
             className={classes.buttonBase}
-            onClick={e => setOption(!option)}
+            // onClick={e => setOption(!option)}
         >
             <CardActionArea>
                 <CardContent>
-                    <Grid
-                        container
-                        direction="column"
-                        justify="center"
-                        alignItems="center"
-                    >
+
                         <p style={{
                             color: option ? "#FFFFFF" : "#000000" 
                         }}>
                             {text}
                         </p>
-                    </Grid>
+
                 </CardContent>
             </CardActionArea>
         </ButtonBase>
@@ -161,21 +168,56 @@ function BigOption(props) {
 }
 
 function SmallOptionBoard(props) {
+    const classes = useStyles();
     return (
-        <Grid container>
+        <Grid 
+        container
+        direction="row"
+        justify="space-around"
+        alignItems="center"
+        className={classes.root}
+        >
         { props.items.map(item => {
-            return (<SmallOption text={item}></SmallOption>)
+            return (
+                <SmallOption text={item.text} image={item.image} xs={4} ></SmallOption>
+            )
         }) }
         </Grid>
     )
 }
 
 function SmallOption(props) {
+    const classes = useStyles();
+    const text = props.text;
+    const image = props.image || images.default;
     return (
         <Card>
         <CardActionArea>
-        <CardContent>
-            <p>{props.text}</p>
+        <CardContent
+            className={classes.squareContent}
+            style={{
+                backgroundImage: `url(${image})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+        }}>
+            {/* div containing the text */}
+            <div style={{ 
+                position: 'absolute', 
+                zIndex:1, width: '100%',
+                height: '100%'
+            }}>
+            <p style={{ color: 'white', marginTop: 'calc(50% - 0.5em'}}>
+                {text}
+            </p>
+            </div>
+
+            {/* Black layer on top */}
+            <div style={{
+                backgroundColor: 'black', 
+                opacity: 0.4, 
+                width: '100%', 
+                height: '100%'}} />
+            
         </CardContent>
         </CardActionArea>
         </Card>
