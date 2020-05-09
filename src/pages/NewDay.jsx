@@ -7,6 +7,7 @@ import SkipNextIcon from '@material-ui/icons/SkipNext';
 import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import images from "../res/Asset";
+import { randomMooc, randomSpotify } from './RandomContent';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -101,6 +102,8 @@ function NewDay(props) {
   // useEffect(() => {
   //   window.scrollTo(0, 0)
   // }, [])
+  const [mooc, setMooc] = useState(JSON.parse(randomMooc()));
+  const [spotify, setSpotify] = useState(JSON.parse(randomSpotify()));
   
   return (
     <Fade in={true} timeout={1000}>
@@ -115,111 +118,122 @@ function NewDay(props) {
       >   
         <DayCard />
 
-          <Grid item className={classes.item}>
-              <h1 style={{color: "#333333"}}>Start your day</h1>
-          </Grid>
-          <Grid item className={classes.item}>
-            <Card className={classes.card}>
-              <CardActionArea>
-                <ButtonBase onClick={_ => setBibimbap(!bibimbap)} style={{width: '100%'}}>
-                <CardContent>
-                  <p>Make Bibimbap</p>
+        <Grid item className={classes.item}>
+            <h1 style={{color: "#333333"}}>Start your day</h1>
+        </Grid>
+        <Grid item className={classes.item}>
+          <Card className={classes.card}>
+            <CardActionArea>
+              <ButtonBase onClick={_ => setBibimbap(!bibimbap)} style={{width: '100%'}}>
+              <CardContent>
+                <p>Make Bibimbap</p>
+              </CardContent>
+              </ButtonBase>
+            </CardActionArea>
+
+            <Collapse in={bibimbap} timeout={1000}><Fade in={bibimbap} timeout={1000} style={{ transitionDelay: 200}}>
+            <div>
+            <CardMedia
+              component="img"
+              image={images.bibimbap} 
+            />
+            <CardActions>
+              <a href="https://www.allrecipes.com/recipe/228240/bibimbap-korean-rice-with-mixed-vegetables/" target="_blank" rel="noopener noreferrer">
+              <Button size="small">
+                Recipe
+              </Button>
+              </a>
+              <a href="https://www.youtube.com/watch?v=lqUtV6lT1n4" target="_blank" rel="noopener noreferrer">
+              <Button size="small">
+                Watch video demo
+              </Button>
+              </a>
+            </CardActions>
+            </div>
+
+            </Fade></Collapse>
+            
+
+
+            
+          </Card>
+        </Grid>
+        <Grid item className={classes.item}>
+          <Card className={classes.card}>
+            <div className={classes.details}>
+                <CardContent className={classes.content}>
+                    {/* <p>Serial Killer</p>
+                    <p>Lana Del Rey</p> */}
+                    <iframe src={`https://open.spotify.com/embed/track/${spotify}`} title="spotify" width="100%" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
                 </CardContent>
-                </ButtonBase>
-              </CardActionArea>
+                {/* <div className={classes.controls}>
+                    <IconButton aria-label="previous">
+                        <SkipPreviousIcon />
+                    </IconButton>
+                    <IconButton aria-label="play/pause">
+                        <PlayArrowIcon className={classes.playIcon} />
+                    </IconButton>
+                    <IconButton aria-label="next">
+                        <SkipNextIcon />
+                    </IconButton>
+                </div> */}
+                <CardActions>
+                <a href={`spotify:track:${spotify}`} target='_blank' rel="noopener noreferrer">
+                <Button size="small">
+                  Listen on Spotify
+                </Button>
+                </a>
+                <Button size="small" onClick={_ => setSpotify(JSON.parse(randomSpotify()))}>
+                  Get another song!
+                </Button>
+                </CardActions>
 
-              <Collapse in={bibimbap} timeout={1000}><Fade in={bibimbap} timeout={1000} style={{ transitionDelay: 200}}>
-              <div>
-              <CardMedia
-                component="img"
-                image={images.bibimbap} 
-              />
-              <CardActions>
-                <a href="https://www.allrecipes.com/recipe/228240/bibimbap-korean-rice-with-mixed-vegetables/" target="_blank" rel="noopener noreferrer">
-                <Button size="small">
-                  Recipe
-                </Button>
-                </a>
-                <a href="https://www.youtube.com/watch?v=lqUtV6lT1n4" target="_blank" rel="noopener noreferrer">
-                <Button size="small">
-                  Watch video demo
-                </Button>
-                </a>
-              </CardActions>
-              </div>
+            </div>
+            <CardMedia
+                className={classes.cover}
+                image="/static/images/cards/live-from-space.jpg"
+                title="Live from space album cover"
+            />
+          </Card>
+        </Grid>
+
+        {/* Online Learning */}
+        <Grid item className={classes.item}>
+        <Card className={classes.card}>
+          <CardActionArea>
+          <ButtonBase onClick={_ => setMl(!ml)} style={{width: '100%'}}>
+          <CardContent>
+            <h3>Recommend me an online course!</h3>
+          </CardContent>
+          </ButtonBase>
+          </CardActionArea>
   
-              </Fade></Collapse>
-              
+          <Collapse in={ml} timeout={1000}><Fade in={ml} timeout={1000} style={{ transitionDelay: 200}}>
+          <div>
+          <CardContent>
+            <p>{mooc[0]}</p>
+          </CardContent>
+          <CardMedia
+            component="img"
+            image={images.webdev} 
+          />
+          <CardActions>
+            <a href={mooc[1]} target='_blank' rel="noopener noreferrer">
+            <Button size="small">
+              Go to Coursera
+            </Button>
+            </a>
+            <Button size="small" onClick={_ => setMooc(JSON.parse(randomMooc()))}>
+              Recommend another course
+            </Button>
+          </CardActions>
+          </div>
 
+          </Fade></Collapse>
+          
 
-              
-            </Card>
-          </Grid>
-          <Grid item className={classes.item}>
-              <Card className={classes.card}>
-                  <div className={classes.details}>
-                      <CardContent className={classes.content}>
-                          {/* <p>Serial Killer</p>
-                          <p>Lana Del Rey</p> */}
-                          <iframe src="https://open.spotify.com/embed/track/0pYacDCZuRhcrwGUA5nTBe" title="spotify" width="100%" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-                      </CardContent>
-                      {/* <div className={classes.controls}>
-                          <IconButton aria-label="previous">
-                              <SkipPreviousIcon />
-                          </IconButton>
-                          <IconButton aria-label="play/pause">
-                              <PlayArrowIcon className={classes.playIcon} />
-                          </IconButton>
-                          <IconButton aria-label="next">
-                              <SkipNextIcon />
-                          </IconButton>
-                      </div> */}
-                      <CardActions>
-                      <a href="spotify:track:0pYacDCZuRhcrwGUA5nTBe" target='_blank' rel="noopener noreferrer">
-                      <Button size="small">
-                        Listen on Spotify
-                      </Button>
-                      </a>
-                      </CardActions>
-
-                  </div>
-                  <CardMedia
-                      className={classes.cover}
-                      image="/static/images/cards/live-from-space.jpg"
-                      title="Live from space album cover"
-                  />
-                  </Card>
-          </Grid>
-          <Grid item className={classes.item}>
-              <Card className={classes.card}>
-                  <CardActionArea>
-                  <ButtonBase onClick={_ => setMl(!ml)} style={{width: '100%'}}>
-                  <CardContent>
-                    <p>Learn Machine Learning</p>
-                  </CardContent>
-                  </ButtonBase>
-         
-                  <Collapse in={ml} timeout={1000}><Fade in={ml} timeout={1000} style={{ transitionDelay: 200}}>
-                  <div>
-                    
-                  <CardMedia
-                      component="img"
-                      image={images.webdev} 
-                  />
-                  <CardActions>
-                    <a href="https://www.coursera.org/learn/machine-learning" target='_blank' rel="noopener noreferrer">
-                    <Button size="small">
-                          Go to Coursera
-                    </Button>
-                    </a>
-                  </CardActions>
-                  </div>
-
-                  </Fade></Collapse>
-                  </CardActionArea>
-
-              </Card>
-          </Grid>
+        </Card>
+        </Grid>
         </Grid>
     </Fade>
   );
