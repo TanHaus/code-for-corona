@@ -24,7 +24,7 @@ const useStyles = makeStyles(theme => ({
 function ActivityCard(props) {
   const classes = useStyles();
   const { text, activity, setActivity } = props;
-  const pic = props.pic || images.deafault;
+  const pic = props.pic || images.default;
   return (
     <Card
       container

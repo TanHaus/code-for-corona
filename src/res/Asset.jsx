@@ -1,6 +1,6 @@
  const images = {
     cookDish: require('./cookDish.svg'),
-    deafault: require('./default.jpg'),
+    default: require('./default.jpg'),
     popcorn: require('./popcorn.svg'),
     book: require('./book.svg'),
     dumbbell: require('./dumbbell.svg'),
