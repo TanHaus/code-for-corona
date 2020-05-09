@@ -1,5 +1,6 @@
 import React from "react";
 import { Grid, Button, Fade } from "@material-ui/core";
+import { Link } from "react-router-dom";
 
 function Personalization(props) {
     return (
@@ -15,7 +16,7 @@ function Personalization(props) {
                 <p>as many as you like</p>
             </Grid>
             <Grid item xs>
-                <Button >Let's get started</Button>
+                <Button component={Link} to="/start-day">Let's get started</Button>
             </Grid>
             
         </Grid>
