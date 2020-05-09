@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { makeStyles, Fade, Grid, Card, CardActionArea, CardMedia, CardContent, ButtonBase, Button } from "@material-ui/core";
 import images from "../res/Asset";
@@ -61,6 +61,7 @@ function ActivityCard(props) {
 }
 
 function Activities() {
+  useEffect(_ => { window.scrollTo(0,0); })
   const classes                       = useStyles();
   const activities = JSON.parse(localStorage.getItem("activities"));
   const [cookDish, setCookDish]       = useState(activities.cookDish);

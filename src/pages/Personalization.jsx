@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Grid, Button, ButtonBase, Fade } from "@material-ui/core";
 import { Card, CardContent, CardActionArea } from "@material-ui/core";
 import { Link } from "react-router-dom";
@@ -27,6 +27,7 @@ const useStyles = makeStyles({
 })
 
 function Personalization(props) {
+  useEffect(_ => { window.scrollTo(0,0); })
   const classes = useStyles();
   const activities = JSON.parse(localStorage.getItem("activities"));
   const {cookDish, watchMovie, readBook, workOut, learnOnline, cleanRoom, chatFnF, donate, volunteer} = activities;

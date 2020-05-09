@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Grid, Button, Fade } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
@@ -13,6 +13,7 @@ const useStyles = makeStyles({
 })
 
 function EntryPoint(props) {
+    useEffect(_ => { window.scrollTo(0,0); })
     const classes = useStyles();
     if (!JSON.parse(localStorage.getItem("activities"))) {
         const activities = {cookDish: false, watchMovie: false, readBook: false, workOut: false, learnOnline: false, cleanRoom: false, chatFnF: false, donate: false, volunteer: false};
