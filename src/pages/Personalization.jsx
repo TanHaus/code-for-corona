@@ -52,9 +52,9 @@ function Personalization(props) {
                 <Grid item className={classes.item}>
                     <h2>Dishes that I want to cook are similar to ...</h2>
                     <SmallOptionBoard items={[
-                        {text: "Pho",},
-                        {text: "Kway Teow",},
-                        {text: "Bibimbap",},
+                        {text: "Pho", image: images.pho},
+                        {text: "Char Kway Teow", image: images.charKwayTeow},
+                        {text: "Bibimbap", image: images.bibimbap},
                     ]}
                     ></SmallOptionBoard>
                 </Grid>
@@ -190,6 +190,7 @@ function SmallOption(props) {
             style={{
                 backgroundImage: `url(${image})`,
                 backgroundSize: 'cover',
+                backgroundPosition: 'center',
         }}>
             {/* div containing the text */}
             <div style={{ 
