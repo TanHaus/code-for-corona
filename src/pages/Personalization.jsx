@@ -39,6 +39,9 @@ function Personalization(props) {
       direction="column"
       justify="center"
       alignItems="center"
+      style={{
+        backgroundColor: "#f3f3f3"
+      }}
     >   
       <Grid item className={classes.item}>
         <h1>Personalize your activities</h1>

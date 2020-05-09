@@ -28,23 +28,23 @@ const useStyles = makeStyles(theme => ({
     details: {
         display: 'flex',
         flexDirection: 'column',
-      },
-      content: {
+    },
+        content: {
         flex: '1 0 auto',
-      },
-      cover: {
+    },
+        cover: {
         width: 151,
-      },
-      controls: {
+    },
+    controls: {
         display: 'flex',
         alignItems: 'center',
         paddingLeft: theme.spacing(1),
         paddingBottom: theme.spacing(1),
-      },
-      playIcon: {
+    },
+    playIcon: {
         height: 38,
         width: 38,
-      },
+    },
 }));
 
 function DayCard(props) {
@@ -80,7 +80,9 @@ function DayCard(props) {
       <CardContent
         style={{margin: 'auto 10px'}}
       >
-      <h2>{greeting}</h2>
+      <h2 style={{
+          color: "#5c5c5c"
+      }}>{greeting}</h2>
       </CardContent>
       <CardMedia
         image={image}
@@ -105,14 +107,17 @@ function NewDay(props) {
         direction="column"
         justify="center"
         alignItems="center"
+        style={{
+            backgroundColor: "#f3f3f3"
+        }}
       >   
         <DayCard />
 
           <Grid item className={classes.item}>
-              <h1>Start your day</h1>
+              <h1 style={{color: "#333333"}}>Start your day</h1>
           </Grid>
           <Grid item className={classes.item}>
-            <Card className={classes.root}>
+            <Card className={classes.card}>
               <CardActionArea>
                 <CardContent>
                   <p>Make Bibimbap</p>
@@ -137,7 +142,7 @@ function NewDay(props) {
             </Card>
           </Grid>
           <Grid item className={classes.item}>
-              <Card className={classes.root}>
+              <Card className={classes.card}>
                   <div className={classes.details}>
                       <CardContent className={classes.content}>
                           {/* <p>Serial Killer</p>
@@ -172,7 +177,7 @@ function NewDay(props) {
                   </Card>
           </Grid>
           <Grid item className={classes.item}>
-              <Card className={classes.root}>
+              <Card className={classes.card}>
                   <CardActionArea>
                       <CardContent>
                           <p>Learn Machine Learning</p>
