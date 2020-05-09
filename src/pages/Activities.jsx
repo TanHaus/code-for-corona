@@ -47,16 +47,14 @@ function ActivityCard(props) {
         title={name}
         className={classes.illustration}
       />
-    <CardContent>
-        <p
-          style={{
-            color: activity ? "#ffffff" : "000000",
-            fontWeight: "bold"
+      <CardContent>
+          <p style={{
+              color: activity ? "#FFFFFF" : "#000000" 
           }}>
-            {name}
-        </p>
-    </CardContent>
-      </CardActionArea>
+              {name}
+          </p>
+      </CardContent>
+    </CardActionArea>
     </ButtonBase>
     </Card>
   )
