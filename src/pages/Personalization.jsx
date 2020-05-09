@@ -1,8 +1,9 @@
 import React from "react";
-import { Grid, Button } from "@material-ui/core";
+import { Grid, Button, Fade } from "@material-ui/core";
 
 function Personalization(props) {
     return (
+        <Fade in="true">
         <Grid 
             container
             direction="column"
@@ -18,6 +19,7 @@ function Personalization(props) {
             </Grid>
             
         </Grid>
+        </Fade>
     );
 }
 
