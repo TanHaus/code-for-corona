@@ -17,7 +17,7 @@ function EntryPoint(props) {
                 <h1>Seeking to be inspired during Circuit Breaker?</h1>
             </Grid>
             <Grid item xs>
-                <Button component={Link} to="/configure">Let's get started</Button>
+                <Button component={Link} to="/choose-activities">Let's get started</Button>
             </Grid>
             
         </Grid>

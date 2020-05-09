@@ -11,7 +11,14 @@ function Personalization(props) {
             justify="center"
             alignItems="center"
         >   
-            <Grid item xs>
+            <Grid 
+                item 
+                xs
+                container
+                direction="column"
+                justify="center"
+                alignItems="center"
+            >
                 <h1>Choose your activities</h1>
                 <p>as many as you like</p>
             </Grid>

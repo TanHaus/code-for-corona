@@ -3,6 +3,7 @@ import { Route, Switch, BrowserRouter as Router, Link } from "react-router-dom";
 import EntryPoint from "./pages/EntryPoint";
 import Personalization from "./pages/Personalization";
 import NewDay from "./pages/NewDay";
+import Activities from "./pages/Activities";
 import './App.css';
 
 function App() {
@@ -17,7 +18,8 @@ function App() {
     <Router>
       <Switch>
         <Route path="/entry" component={EntryPoint} />
-        <Route path="/configure" component={Personalization} />
+        <Route path="/choose-activities" component={Activities} />
+        <Route path="/pesronalize" component={Personalization} />
         <Route path="/start-day" component={NewDay} />
       </Switch>
     </Router>
