@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Grid, Button, Fade } from "@material-ui/core";
 import { Card, CardContent, CardActionArea, CardMedia, CardActions, IconButton } from "@material-ui/core";
 import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
@@ -48,20 +48,36 @@ const useStyles = makeStyles(theme => ({
 
 function DayCard(props) {
   const classes = useStyles();
+  const now = new Date().getHours();
+  const [image, setImage] = useState(images.moon);
+  const [greeting, setGreeting] = useState('Good morning!');
+  if (now > 18) { 
+    setImage(images.moon);
+    setGreeting('Good evening!');
+  }
+  else if (now > 12) { 
+    setImage(images.sunCloud); 
+    setGreeting('Good afternoon!');
+  }
+  else if (now > 6) { 
+    setImage(images.sun); 
+    setGreeting('Good morning');
+  }
+
   return (
     <Card
       className={classes.card}
     >
     <Grid container>
-
-     
-      <CardContent>
-      <h2>Good morning! </h2>
+      <CardContent
+        style={{margin: 'auto 10px'}}
+      >
+      <h2>{greeting}</h2>
       </CardContent>
-      <CardMedia 
-        image={images.sun}
+      <CardMedia
+        image={image}
         className={classes.illustration}
-        style={{width: 100}}
+        style={{width: 100, margin: '20px'}}
       />
     </Grid>
     </Card>
@@ -143,9 +159,12 @@ function NewDay(props) {
                       </CardContent>
                   </CardActionArea>
                   <CardActions>
-                      <Button size="small">
+                    <a href="https://www.coursera.org/learn/machine-learning" >
+                    <Button size="small">
                           Go to Coursera
-                      </Button>
+                    </Button>
+                    </a>
+
                   </CardActions>
               </Card>
           </Grid>
