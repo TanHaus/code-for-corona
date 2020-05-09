@@ -15,6 +15,7 @@ const useStyles = makeStyles(theme => ({
     item: {
         margin: '20px auto',
         width: '80vw',
+        maxWidth: '400px'
     },
     squareContent: {
         width: '25vw',
@@ -67,8 +68,15 @@ function DayCard(props) {
   return (
     <Card
       className={classes.card}
+      style={{
+        width: '80vw',
+        maxWidth: '400px',
+      }}
     >
-    <Grid container>
+    <Grid container
+      style={{
+        flexWrap: 'nowrap',
+      }}>
       <CardContent
         style={{margin: 'auto 10px'}}
       >
@@ -103,21 +111,25 @@ function NewDay(props) {
           <Grid item className={classes.item}>
             <Card className={classes.root}>
               <CardActionArea>
-                <CardMedia
-                  image=""
-                  title="Bibimbap"
-                />
                 <CardContent>
                   <p>Make Bibimbap</p>
                 </CardContent>
+                <CardMedia
+                  component="img"
+                  image={images.bibimbap} 
+                />
               </CardActionArea>
                 <CardActions>
+                  <a href="https://www.allrecipes.com/recipe/228240/bibimbap-korean-rice-with-mixed-vegetables/" target="_blank">
                   <Button size="small">
                     Recipe
                   </Button>
+                  </a>
+                  <a href="https://www.youtube.com/watch?v=lqUtV6lT1n4" target="_blank">
                   <Button size="small">
                     Watch video demo
                   </Button>
+                  </a>
                 </CardActions>
             </Card>
           </Grid>
@@ -125,10 +137,11 @@ function NewDay(props) {
               <Card className={classes.root}>
                   <div className={classes.details}>
                       <CardContent className={classes.content}>
-                          <p>Serial Killer</p>
-                          <p>Lana Del Rey</p>
+                          {/* <p>Serial Killer</p>
+                          <p>Lana Del Rey</p> */}
+                          <iframe src="https://open.spotify.com/embed/track/0pYacDCZuRhcrwGUA5nTBe" width="100%" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
                       </CardContent>
-                      <div className={classes.controls}>
+                      {/* <div className={classes.controls}>
                           <IconButton aria-label="previous">
                               <SkipPreviousIcon />
                           </IconButton>
@@ -138,7 +151,15 @@ function NewDay(props) {
                           <IconButton aria-label="next">
                               <SkipNextIcon />
                           </IconButton>
-                      </div>
+                      </div> */}
+                      <CardActions>
+                      <a href="spotify:track:0pYacDCZuRhcrwGUA5nTBe" target='_blank' >
+                      <Button size="small">
+                        Listen on Spotify
+                      </Button>
+                      </a>
+                      </CardActions>
+
                   </div>
                   <CardMedia
                       className={classes.cover}
@@ -150,16 +171,16 @@ function NewDay(props) {
           <Grid item className={classes.item}>
               <Card className={classes.root}>
                   <CardActionArea>
-                      <CardMedia
-                          image=""
-                          title="Bibimbap"
-                      />
                       <CardContent>
                           <p>Learn Machine Learning</p>
                       </CardContent>
+                      <CardMedia
+                        component="img"
+                        image={images.webdev} 
+                      />
                   </CardActionArea>
                   <CardActions>
-                    <a href="https://www.coursera.org/learn/machine-learning" >
+                    <a href="https://www.coursera.org/learn/machine-learning" target='_blank' >
                     <Button size="small">
                           Go to Coursera
                     </Button>

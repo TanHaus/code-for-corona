@@ -9,12 +9,12 @@ import './App.css';
 function App() {
   return (
     <div>
-      <ul>
+      {/* <ul>
         <li><a href="/entry">Entry</a></li>
         <li><a href="/choose-activities">Activities</a></li>
         <li><a href="/personalize">Personalization</a></li>
         <li><a href="/start-day">NewDay</a></li>
-      </ul>
+      </ul> */}
     
     <Router>
       <Switch>
