@@ -16,6 +16,12 @@
     pho: require('./pho.jpg'),
     charKwayTeow: require('./charKwayTeow.jpg'),
     bibimbap: require('./bibimbap.jpg'),
+    fed: require('./fed.jpg'),
+    webdev: require('./webdev.jpg'),
+    art: require('./art.jpg'),
+    reliefFund: require('./reliefFund.jpg'),
+    sayangsayang: require('./sayangsayang.jpg'),
+    courageFund: require('./courageFund.jpg'),
 }
 
 export default images
