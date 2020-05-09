@@ -128,7 +128,9 @@ function Activities() {
     >   
       <Grid item className={classes.item}>
         <h1>Choose your activities</h1>
-        <p>as many as you like</p> 
+        <p>as many as you like</p>
+        <br/>
+        <p>(For the demo, only certain items will work)</p>
       </Grid>
       <Grid item className={classes.item}>
         <h2>Leisure</h2>
