@@ -10,17 +10,18 @@ const useStyles = makeStyles({
     },
     item: {
         margin: '20px auto',
+        width: '80vw',
     },
     square: {
-        
+        width: '20vw',
+        height: '20vw',
     },
     card: {
-        minWidth: 340,
-        maxWidth: 380,
         margin: '20px auto',
-        minHeight: 140,
-        maxHeight: 160
-      },
+    },
+    buttonBase: {
+        width: '100%',
+    }
 })
 
 function Personalization(props) {
@@ -48,11 +49,13 @@ function Personalization(props) {
                 </Grid>
                 <Grid item className={classes.item}>
                     <h2>Dishes that I want to cook are similar to ...</h2>
-                    <Grid container space={5}>
-                        <SmallOption text="Pho" />
-                        <SmallOption text="Kway Teow" />
-                        <SmallOption text="Bibimbap" />
-                    </Grid>
+                    <SmallOptionBoard items={[
+                        "Pho",
+                        "Kway Teow",
+                        "Bibimbap",
+                        "Hello",
+                    ]}
+                    ></SmallOptionBoard>
                 </Grid>
             </div> : <div />
             }
@@ -65,11 +68,11 @@ function Personalization(props) {
                 </Grid>
                 <Grid item className={classes.item}>
                     <h2>My favourite movies are ...</h2>
-                    <Grid container space={5}>
-                        <SmallOption text="Web Development"></SmallOption>
-                        <SmallOption text="Contemporary Art"></SmallOption>
-                        <SmallOption text="Microeconomics"></SmallOption>
-                    </Grid>
+                    <SmallOptionBoard items={[
+                        "Simba",
+                        "Bello",
+                    ]}>
+                    </SmallOptionBoard>
                 </Grid>
             </div> : <div />
             }
@@ -104,10 +107,11 @@ function Personalization(props) {
                         <SmallOption text="Contemporary Art"></SmallOption>
                         <SmallOption text="Microeconomics"></SmallOption>
                     </Grid> */}
-                    <SmallOptionBoard
-                        items={["Web Development",
-                                "Contemporary Art",
-                                "Microeconomics"]}>
+                    <SmallOptionBoard items={[
+                        "Web Development",
+                        "Contemporary Art",
+                        "Microeconomics",
+                        "Con mèo"]}>
                     </SmallOptionBoard>
                 </Grid>
             </div> : <div />
@@ -128,31 +132,24 @@ function BigOption(props) {
     return (
     <Card
         container
-        xs={12}
         className={classes.card}
         style={{
             backgroundColor: option ? "#AAAAAA" : "#FFFFFF"
         }}
     >
         <ButtonBase 
-            xs={12}
             className={classes.buttonBase}
-            onClick={e => setOption(!option)}
+            // onClick={e => setOption(!option)}
         >
             <CardActionArea>
                 <CardContent>
-                    <Grid
-                        container
-                        direction="column"
-                        justify="center"
-                        alignItems="center"
-                    >
+
                         <p style={{
                             color: option ? "#FFFFFF" : "#000000" 
                         }}>
                             {text}
                         </p>
-                    </Grid>
+
                 </CardContent>
             </CardActionArea>
         </ButtonBase>
@@ -171,10 +168,11 @@ function SmallOptionBoard(props) {
 }
 
 function SmallOption(props) {
+    const classes = useStyles();
     return (
         <Card>
         <CardActionArea>
-        <CardContent>
+        <CardContent className={classes.square}>
             <p>{props.text}</p>
         </CardContent>
         </CardActionArea>
