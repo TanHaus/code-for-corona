@@ -19,7 +19,7 @@ function App() {
       <Switch>
         <Route path="/entry" component={EntryPoint} />
         <Route path="/choose-activities" component={Activities} />
-        <Route path="/pesronalize" component={Personalization} />
+        <Route path="/personalize" component={Personalization} />
         <Route path="/start-day" component={NewDay} />
       </Switch>
     </Router>
