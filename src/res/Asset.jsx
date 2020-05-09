@@ -12,6 +12,10 @@
     volunteer:  require('./volunteer.svg'),
     broom:      require('./broom.svg'),
 
+    sun:        require('./sun.svg'),
+    sunCloud:   require('./sunCloud.svg'),
+    moon:       require('./moon.svg'),
+
     // JPG images
     pho: require('./pho.jpg'),
     charKwayTeow: require('./charKwayTeow.jpg'),
