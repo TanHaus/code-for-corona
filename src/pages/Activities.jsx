@@ -28,7 +28,7 @@ function ActivityCard(props) {
     const classes = useStyles();
     const { name, pic, activity, setActivity } = props;
     return (
-        <Card
+    <Card
         container
         xs={12}
         className={classes.card}

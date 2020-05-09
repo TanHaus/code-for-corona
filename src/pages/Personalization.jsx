@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, Button, Fade } from "@material-ui/core";
+import { Grid, Button, ButtonBase, Fade } from "@material-ui/core";
 import { Card, CardContent, CardActionArea } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
@@ -14,7 +14,14 @@ const useStyles = makeStyles({
     },
     square: {
         
-    }
+    },
+    card: {
+        minWidth: 340,
+        maxWidth: 380,
+        margin: '20px auto',
+        minHeight: 140,
+        maxHeight: 160
+      },
 })
 
 function Personalization(props) {
@@ -60,9 +67,9 @@ function Personalization(props) {
             {learnOnline ? <div>
                 <Grid item className={classes.item}>
                     <h2>I want to learn ....</h2>
-                    <LearnOption text="Science & Mathematics"></LearnOption>
-                    <LearnOption text="Arts & Humanities"></LearnOption>
-                    <LearnOption text="Anything. Surprise me!"></LearnOption>
+                    <OptionCard text="Science & Mathematics" />
+                    <OptionCard text="Arts & Humanities" />
+                    <OptionCard text="Anything. Surprise me!" />
                 </Grid>
                 <Grid item className={classes.item}>
                     <h2>Dishes that I want to cook are similar to ...</h2>
@@ -83,16 +90,42 @@ function Personalization(props) {
     );
 }
 
-function LearnOption(props) {
+function OptionCard(props) {
+    const classes = useStyles();
+    const { name, pic, option, setOption } = props;
 
     return (
-        <Card>
+    <Card
+        container
+        xs={12}
+        className={classes.card}
+        style={{
+            backgroundColor: option ? "#AAAAAA" : "#FFFFFF"
+        }}
+    >
+        <ButtonBase 
+            xs={12}
+            className={classes.buttonBase}
+            onClick={e => setOption(!option)}
+        >
             <CardActionArea>
-            <CardContent>
-            <p>{props.text}</p>
-            </CardContent>
+                <CardContent>
+                    <Grid
+                        container
+                        direction="column"
+                        justify="center"
+                        alignItems="center"
+                    >
+                        <p style={{
+                            color: activity ? "#FFFFFF" : "#000000" 
+                        }}>
+                            {name}
+                        </p>
+                    </Grid>
+                </CardContent>
             </CardActionArea>
-        </Card>
+        </ButtonBase>
+    </Card>
     )
 }
 
