@@ -8,7 +8,7 @@ const useStyles = makeStyles(theme => ({
     margin: '20px auto',
   },
   card: {
-    minWidth: "80vw",
+    width: "80vw",
     maxWidth: "400px",
     margin: '20px auto',
   },
