@@ -48,6 +48,8 @@ function Personalization(props) {
     >   
       <Grid item className={classes.item}>
         <h1>Personalize your activities</h1>
+        <br/>
+        <p>(For the demo, only certain items will work)</p>
       </Grid>
 
       {cookDish ? <div>
@@ -76,9 +78,9 @@ function Personalization(props) {
       {learnOnline ? <div>
         <Grid item className={classes.item}>
           <h2>I want to learn ....</h2>
-          <BigOption text="Science & Mathematics" ></BigOption>
-          <BigOption text="Arts & Humanities"></BigOption>
-          <BigOption text="Anything. Surprise me!" option={mooc} setOption={setMooc} ></BigOption>
+          <BigOption text="Science & Mathematics" />
+          <BigOption text="Arts & Humanities" />
+          <BigOption text="Anything. Surprise me!" option={mooc} setOption={setMooc} />
         </Grid>
 
         <Collapse in={mooc} timeout={1000}><Fade in={mooc} timeout={1000} style={{ transitionDelay: 200}}>
@@ -98,13 +100,15 @@ function Personalization(props) {
 
       {donate ? <div>
         <Grid item className={classes.item}>
-          <h2>Causes I want to donate ...</h2>
-          <BigOption text="Migrant workers in need"></BigOption>
-          <BigOption text="Support World Health Organization"></BigOption>
-          <BigOption text="Severely affected families and seniors"></BigOption>
+          <h2>Causes I want to donate to ...</h2>
+          <BigOption text="Migrant workers in need" />
+          <BigOption text="Support World Health Organization" />
+          <BigOption text="Severely affected families and seniors" option={family} setOption={setFamily} />
         </Grid>
+
+        <Collapse in={family} timeout={1000}><Fade in={family} timeout={1000} style={{ transitionDelay: 200}}>
         <Grid item className={classes.item}>
-          <h2>Topics that I want to dive in...</h2>
+          <h2>Funds that I would be interested in ...</h2>
           <SmallOptionBoard items={[
             {text: "The Courage Fund",        image: images.courageFund},
             {text: "The Sayang Sayang Fund",  image: images.sayangsayang},
@@ -112,6 +116,8 @@ function Personalization(props) {
           ]}>
           </SmallOptionBoard>
         </Grid>
+        </Fade></Collapse>
+      
       </div> : <div />
       }
 
