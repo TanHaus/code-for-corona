@@ -14,8 +14,10 @@ const useStyles = makeStyles({
 
 function EntryPoint(props) {
     const classes = useStyles();
-    const activities = {cookDish: false, watchMovie: false, readBook: false, workOut: false, learnOnline: false, cleanRoom: false, chatFnF: false, donate: false, volunteer: false};
-    localStorage.setItem("activities", JSON.stringify(activities));
+    if (!JSON.parse(localStorage.getItem("activities"))) {
+        const activities = {cookDish: false, watchMovie: false, readBook: false, workOut: false, learnOnline: false, cleanRoom: false, chatFnF: false, donate: false, volunteer: false};
+        localStorage.setItem("activities", JSON.stringify(activities));
+    }
     return (
         <div className={classes.root}>
         <Fade in="true">

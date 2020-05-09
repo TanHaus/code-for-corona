@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme => ({
 
 function ActivityCard(props) {
   const classes = useStyles();
-  const { name, activity, setActivity } = props;
+  const { text, activity, setActivity } = props;
   const pic = props.pic || images.deafault;
   return (
     <Card
@@ -42,18 +42,18 @@ function ActivityCard(props) {
     <CardActionArea>
       <CardMedia 
         component="img"
-        alt={name}
+        alt={text}
         height="140"
         width="140"
         image={pic}
-        title={name}
+        title={text}
         className={classes.illustration}
       />
     <CardContent>
       <p style={{
           color: activity ? "#FFFFFF" : "#000000" 
       }}>
-          {name}
+          {text}
       </p>
     </CardContent>
       </CardActionArea>
@@ -94,21 +94,21 @@ function Activities() {
       </Grid>
       <Grid item className={classes.item}>
         <h2>Leisure</h2>
-        <ActivityCard name="Cook a dish"   activity={cookDish}   setActivity={setCookDish}   pic={images.cookDish} />
-        <ActivityCard name="Watch a movie" activity={watchMovie} setActivity={setWatchMovie} pic={images.popcorn}  />
-        <ActivityCard name="Read a book"   activity={readBook}   setActivity={setReadBook}   pic={images.book} />
+        <ActivityCard text="Cook a dish"   activity={cookDish}   setActivity={setCookDish}   pic={images.cookDish} />
+        <ActivityCard text="Watch a movie" activity={watchMovie} setActivity={setWatchMovie} pic={images.popcorn}  />
+        <ActivityCard text="Read a book"   activity={readBook}   setActivity={setReadBook}   pic={images.book} />
       </Grid>
       <Grid item className={classes.item}>
         <h2>Self-improvement</h2>
-        <ActivityCard name="Do a workout"              activity={workOut}     setActivity={setWorkOut}     pic={images.dumbbell}/>
-        <ActivityCard name="Take a free online course" activity={learnOnline} setActivity={setLearnOnline} pic={images.eLearnring}/>
-        <ActivityCard name="Clean your room"           activity={cleanRoom}   setActivity={setCleanRoom}   pic={images.broom}/>
+        <ActivityCard text="Do a workout"              activity={workOut}     setActivity={setWorkOut}     pic={images.dumbbell}/>
+        <ActivityCard text="Take a free online course" activity={learnOnline} setActivity={setLearnOnline} pic={images.eLearnring}/>
+        <ActivityCard text="Clean your room"           activity={cleanRoom}   setActivity={setCleanRoom}   pic={images.broom}/>
       </Grid>
       <Grid item className={classes.item}>
         <h2>Human Interaction</h2>
-        <ActivityCard name="Have a chat with family and friends" activity={chatFnF}   setActivity={setChatFnF}   pic={images.chat} />
-        <ActivityCard name="Make a donation"                     activity={donate}    setActivity={setDonate}    pic={images.donation} />
-        <ActivityCard name="Volunteer"                           activity={volunteer} setActivity={setVolunteer} pic={images.volunteer} />
+        <ActivityCard text="Have a chat with family and friends" activity={chatFnF}   setActivity={setChatFnF}   pic={images.chat} />
+        <ActivityCard text="Make a donation"                     activity={donate}    setActivity={setDonate}    pic={images.donation} />
+        <ActivityCard text="Volunteer"                           activity={volunteer} setActivity={setVolunteer} pic={images.volunteer} />
       </Grid>
       <Grid item className={classes.item}>
         <Button

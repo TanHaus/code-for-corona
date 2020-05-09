@@ -84,7 +84,7 @@ function Personalization(props) {
 
 function BigOption(props) {
     const classes = useStyles();
-    const { name, pic, option, setOption } = props;    
+    const { text, pic, option, setOption } = props;    
     return (
     <Card
         container
@@ -110,7 +110,7 @@ function BigOption(props) {
                         <p style={{
                             color: option ? "#FFFFFF" : "#000000" 
                         }}>
-                            {name}
+                            {text}
                         </p>
                     </Grid>
                 </CardContent>
