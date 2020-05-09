@@ -9,7 +9,7 @@ function App() {
   return (
     <Router>
       <div>
-        <nav>
+        {/* <nav>
           <ul>
             <li>
               <Link to="/">Home</Link>
@@ -24,9 +24,9 @@ function App() {
               <Link to="/start-day">Start you Day</Link>
             </li>
           </ul>
-        </nav>
+        </nav> */}
       <Switch>
-        <Route path="/entry">
+        <Route path="/">
           <EntryPoint />
         </Route>
         <Route path="/configure">
