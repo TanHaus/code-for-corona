@@ -65,17 +65,17 @@ function Activities() {
   const classes                       = useStyles();
   const activities = JSON.parse(localStorage.getItem("activities"));
   const [cookDish, setCookDish]       = useState(activities.cookDish);
-  const [watchMovie, setWatchMovie]   = useState(activities.watchMovie);
-  const [readBook, setReadBook]       = useState(activities.readBook);
-  const [workOut, setWorkOut]         = useState(activities.workOut);
+  // const [watchMovie, setWatchMovie]   = useState(activities.watchMovie);
+  // const [readBook, setReadBook]       = useState(activities.readBook);
+  // const [workOut, setWorkOut]         = useState(activities.workOut);
   const [learnOnline, setLearnOnline] = useState(activities.learnOnline);
-  const [cleanRoom, setCleanRoom]     = useState(activities.cleanRoom);
-  const [chatFnF, setChatFnF]         = useState(activities.chatFnF);
+  // const [cleanRoom, setCleanRoom]     = useState(activities.cleanRoom);
+  // const [chatFnF, setChatFnF]         = useState(activities.chatFnF);
   const [donate, setDonate]           = useState(activities.donate);
-  const [volunteer, setVolunteer]     = useState(activities.volunteer);
+  // const [volunteer, setVolunteer]     = useState(activities.volunteer);
 
   const handleSubmitForm = () => {
-    const activities = {cookDish, watchMovie, readBook, workOut, learnOnline, cleanRoom, chatFnF, donate, volunteer};
+    const activities = { cookDish, learnOnline, donate };
     localStorage.setItem("activities", JSON.stringify(activities));
   }
 
@@ -94,20 +94,20 @@ function Activities() {
       <Grid item className={classes.item}>
         <h2>Leisure</h2>
         <ActivityCard name="Cook a dish"   activity={cookDish}   setActivity={setCookDish}   pic={images.cookDish} />
-        <ActivityCard name="Watch a movie" activity={watchMovie} setActivity={setWatchMovie} pic={images.popcorn}  />
-        <ActivityCard name="Read a book"   activity={readBook}   setActivity={setReadBook}   pic={images.book} />
+        <ActivityCard name="Watch a movie" pic={images.popcorn}  />
+        <ActivityCard name="Read a book"   pic={images.book} />
       </Grid>
       <Grid item className={classes.item}>
         <h2>Self-improvement</h2>
-        <ActivityCard name="Do a workout"              activity={workOut}     setActivity={setWorkOut}     pic={images.dumbbell}/>
+        <ActivityCard name="Do a workout"              pic={images.dumbbell}/>
         <ActivityCard name="Take a free online course" activity={learnOnline} setActivity={setLearnOnline} pic={images.eLearnring}/>
-        <ActivityCard name="Clean your room"           activity={cleanRoom}   setActivity={setCleanRoom}   pic={images.broom}/>
+        <ActivityCard name="Clean your room"           pic={images.broom}/>
       </Grid>
       <Grid item className={classes.item}>
         <h2>Human Interaction</h2>
-        <ActivityCard name="Have a chat with family and friends" activity={chatFnF}   setActivity={setChatFnF}   pic={images.chat} />
+        <ActivityCard name="Have a chat with family and friends" pic={images.chat} />
         <ActivityCard name="Make a donation"                     activity={donate}    setActivity={setDonate}    pic={images.donation} />
-        <ActivityCard name="Volunteer"                           activity={volunteer} setActivity={setVolunteer} pic={images.volunteer} />
+        <ActivityCard name="Volunteer"                           pic={images.volunteer} />
       </Grid>
       <Grid item className={classes.item}>
         <Button
