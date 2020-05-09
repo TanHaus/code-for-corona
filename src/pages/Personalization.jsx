@@ -9,7 +9,6 @@ const useStyles = makeStyles({
         flexGrow: 1,
     },
     item: {
-        // padding: '20px auto',
         margin: '20px auto',
     },
     square: {

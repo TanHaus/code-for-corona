@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { makeStyles, Fade, Grid, Card, CardActionArea, CardMedia, CardContent, ButtonBase, Button } from "@material-ui/core";
+import images from "../res/Asset";
 
 const useStyles = makeStyles(theme => ({
   item: {
@@ -21,12 +22,17 @@ const useStyles = makeStyles(theme => ({
   },
   media: {
     height: 250
+  },
+  illustration: {
+    width: 140,
+    margin: 'auto',
   }
 }));
 
 function ActivityCard(props) {
   const classes = useStyles();
-  const { name, pic, activity, setActivity } = props;
+  const { name, activity, setActivity } = props;
+  const pic = props.pic || images.deafault;
   return (
     <Card
       container
@@ -46,8 +52,10 @@ function ActivityCard(props) {
         component="img"
         alt={name}
         height="140"
+        width="140"
         image={pic}
         title={name}
+        className={classes.illustration}
       />
     <CardContent>
       <Grid
@@ -107,26 +115,26 @@ function Activities() {
       </Grid>
       <Grid item className={classes.item}>
         <h2>Leisure</h2>
-        <ActivityCard name="Cook a dish" activity={cookDish} setActivity={setCookDish} />
-        <ActivityCard name="Watch a movie" activity={watchMovie} setActivity={setWatchMovie} />
-        <ActivityCard name="Read a book" activity={readBook} setActivity={setReadBook} />
+        <ActivityCard name="Cook a dish"   activity={cookDish}   setActivity={setCookDish}   pic={images.cookDish} />
+        <ActivityCard name="Watch a movie" activity={watchMovie} setActivity={setWatchMovie} pic={images.popcorn}  />
+        <ActivityCard name="Read a book"   activity={readBook}   setActivity={setReadBook}   pic={images.book} />
       </Grid>
       <Grid item className={classes.item}>
         <h2>Self-improvement</h2>
-        <ActivityCard name="Do a workout" activity={workOut} setActivity={setWorkOut} pic="http://i.ytimg.com/vi/rIAZ8unRm2c/maxresdefault.jpg" />
-        <ActivityCard name="Take a free online course" activity={learnOnline} setActivity={setLearnOnline} />
-        <ActivityCard name="Clean your room" activity={cleanRoom} setActivity={setCleanRoom} />
+        <ActivityCard name="Do a workout"              activity={workOut}     setActivity={setWorkOut}     pic={images.dumbbell}/>
+        <ActivityCard name="Take a free online course" activity={learnOnline} setActivity={setLearnOnline} pic={images.eLearnring}/>
+        <ActivityCard name="Clean your room"           activity={cleanRoom}   setActivity={setCleanRoom}   pic={images.broom}/>
       </Grid>
       <Grid item className={classes.item}>
         <h2>Human Interaction</h2>
-        <ActivityCard name="Have a chat with family and friends" activity={chatFnF} setActivity={setChatFnF} />
-        <ActivityCard name="Make a donation" activity={donate} setActivity={setDonate} />
-        <ActivityCard name="Volunteer" activity={volunteer} setActivity={setVolunteer} />
+        <ActivityCard name="Have a chat with family and friends" activity={chatFnF}   setActivity={setChatFnF}   pic={images.chat} />
+        <ActivityCard name="Make a donation"                     activity={donate}    setActivity={setDonate}    pic={images.donation} />
+        <ActivityCard name="Volunteer"                           activity={volunteer} setActivity={setVolunteer} pic={images.volunteer} />
       </Grid>
       <Grid item className={classes.item}>
         <Button
           variant="outlined"
-          onClick={() => handleSubmitForm()}
+          onClick={handleSubmitForm}
           component={Link} 
           to="/personalize"
         >
