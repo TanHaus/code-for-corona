@@ -8,24 +8,16 @@ const useStyles = makeStyles(theme => ({
     margin: '20px auto',
   },
   card: {
-    minWidth: 340,
-    maxWidth: 380,
+    minWidth: '80vw',
+    maxWidth: '400px',
     margin: '20px auto',
   },
   buttonBase: {
-    position: 'relative',
-    height: 200,
-    [theme.breakpoints.down('xs')]: {
-      width: '100% !important',
-      height: '100% !important',
-    }
-  },
-  media: {
-    height: 250
+    width: '100%'
   },
   illustration: {
     width: 140,
-    margin: 'auto',
+    margin: '20px auto',
   }
 }));
 
@@ -58,18 +50,11 @@ function ActivityCard(props) {
         className={classes.illustration}
       />
     <CardContent>
-      <Grid
-        container
-        direction="column"
-        justify="center"
-        alignItems="center"
-      >
-        <p style={{
-            color: activity ? "#FFFFFF" : "#000000" 
-        }}>
-            {name}
-        </p>
-      </Grid>
+      <p style={{
+          color: activity ? "#FFFFFF" : "#000000" 
+      }}>
+          {name}
+      </p>
     </CardContent>
       </CardActionArea>
     </ButtonBase>
@@ -102,7 +87,7 @@ function Activities() {
   }
 
   return (
-    <Fade in="true">
+    <Fade in={true} timeout={1000}>
     <Grid 
       container
       direction="column"
