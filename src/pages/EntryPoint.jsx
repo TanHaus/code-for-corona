@@ -6,7 +6,7 @@ function EntryPoint(props) {
     return (
         <Grid >
             <h1>Seeking to be inspired during Circuit Breaker?</h1>
-            <Button >Haro</Button>
+            <Button component={Link} to="/configure">Haro</Button>
         </Grid>
     );
 }

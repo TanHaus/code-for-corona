@@ -8,35 +8,11 @@ import './App.css';
 function App() {
   return (
     <Router>
-      <div>
-        {/* <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/entry">Entry Point</Link>
-            </li>
-            <li>
-              <Link to="/configure">Configure</Link>
-            </li>
-            <li>
-              <Link to="/start-day">Start you Day</Link>
-            </li>
-          </ul>
-        </nav> */}
       <Switch>
-        <Route path="/">
-          <EntryPoint />
-        </Route>
-        <Route path="/configure">
-          <Personalization />
-        </Route>
-        <Route path="/start-day">
-          <NewDay />
-        </Route>
+        <Route path="/entry" component={EntryPoint} />
+        <Route path="/configure" component={Personalization} />
+        <Route path="/start-day" component={NewDay} />
       </Switch>
-      </div>
     </Router>
   );
 }
