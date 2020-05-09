@@ -27,144 +27,128 @@ const useStyles = makeStyles({
 })
 
 function Personalization(props) {
-    const classes = useStyles();
-    const activities = JSON.parse(localStorage.getItem("activities"));
-    const { cookDish, watchMovie, readBook, workOut, learnOnline, cleanRoom, chatFnF, donate, volunteer } = activities;
+  const classes = useStyles();
+  const activities = JSON.parse(localStorage.getItem("activities"));
+  const {cookDish, watchMovie, readBook, workOut, learnOnline, cleanRoom, chatFnF, donate, volunteer} = activities;
 
-    return (
-        <Fade in={true} timeout={1000}>
-        <Grid 
-            container
-            direction="column"
-            justify="center"
-            alignItems="center"
-        >   
-            <Grid item className={classes.item}>
-                <h1>Personalize your activities</h1>
-            </Grid>
-            {cookDish ? <div>
-                <Grid item className={classes.item}>
-                    <h2>I want to cook ....</h2>
-                    <BigOption text="Asian cuisine" />
-                    <BigOption text="Western cuisine" />
-                    <BigOption text="Anything. Surprise me!" />
-                </Grid>
-                <Grid item className={classes.item}>
-                    <h2>Dishes that I want to cook are similar to ...</h2>
-                    <SmallOptionBoard items={[
-                        {text: "Pho", image: images.pho},
-                        {text: "Char Kway Teow", image: images.charKwayTeow},
-                        {text: "Bibimbap", image: images.bibimbap},
-                    ]}
-                    ></SmallOptionBoard>
-                </Grid>
-            </div> : <div />
-            }
-            {watchMovie ? <div>
-                <Grid item className={classes.item}>
-                    <h2>I want to watch ....</h2>
-                    <BigOption text="Fiction & Thriller" />
-                    <BigOption text="Comedy" />
-                    <BigOption text="Horror" />
-                </Grid>
-                <Grid item className={classes.item}>
-                    <h2>My favourite movies are ...</h2>
-<<<<<<< HEAD
-                    <Grid container space={5}>
-                        <SmallOption text="Web Development" />
-                        <SmallOption text="Contemporary Art" />
-                        <SmallOption text="Microeconomics" />
-                    </Grid>
-=======
-                    <SmallOptionBoard items={[
-                        "Simba",
-                        "Bello",
-                    ]}>
-                    </SmallOptionBoard>
->>>>>>> 5914192725b0535d272e66ecb5201900392d3130
-                </Grid>
-            </div> : <div />
-            }
-            {learnOnline ? <div>
-                <Grid item className={classes.item}>
-                    <h2>I want to learn ....</h2>
-                    <BigOption text="Science & Mathematics" />
-                    <BigOption text="Arts & Humanities" />
-                    <BigOption text="Anything. Surprise me!" />
-                </Grid>
-                <Grid item className={classes.item}>
-                    <h2>Dishes that I want to cook are similar to ...</h2>
-                    <Grid container space={5}>
-                        <SmallOption text="Web Development" />
-                        <SmallOption text="Contemporary Art" />
-                        <SmallOption text="Microeconomics" />
-                    </Grid>
-                </Grid>
-            </div> : <div />
-            }
-            {learnOnline ? <div>
-                <Grid item className={classes.item}>
-                    <h2>I want to learn ....</h2>
-                    <BigOption text="Science & Mathematics" />
-                    <BigOption text="Arts & Humanities" />
-                    <BigOption text="Anything. Surprise me!" />
-                </Grid>
-                <Grid item className={classes.item}>
-                    <h2>Dishes that I want to cook are similar to ...</h2>
-                    {/* <Grid container space={5}>
-                        <SmallOption text="Web Development"></SmallOption>
-                        <SmallOption text="Contemporary Art"></SmallOption>
-                        <SmallOption text="Microeconomics"></SmallOption>
-                    </Grid> */}
-                    <SmallOptionBoard items={[
-                        {text: "Web Development"},
-                        {text: "Contemporary Art"},
-                        {text: "Microeconomics"},
-                        {text: "Con mèo"}
-                    ]}>
-                    </SmallOptionBoard>
-                </Grid>
-            </div> : <div />
-            }
+  return (
+    <Fade in={true} timeout={1000}>
+    <Grid 
+      container
+      direction="column"
+      justify="center"
+      alignItems="center"
+    >   
+      <Grid item className={classes.item}>
+        <h1>Personalize your activities</h1>
+      </Grid>
 
-            <Grid item className={classes.item}>
-                <Button component={Link} to="/start-day">Confirm</Button>
-            </Grid>
-            
+      {cookDish ? <div>
+        <Grid item className={classes.item}>
+          <h2>I want to cook ....</h2>
+          <BigOption text="Asian cuisine" />
+          <BigOption text="Western cuisine" />
+          <BigOption text="Anything. Surprise me!" />
         </Grid>
-        </Fade>
-    );
+        <Grid item className={classes.item}>
+          <h2>Dishes that I want to cook are similar to ...</h2>
+          <SmallOptionBoard items={[
+            {text: "Pho",            image: images.pho},
+            {text: "Char Kway Teow", image: images.charKwayTeow},
+            {text: "Bibimbap",       image: images.bibimbap},
+          ]}
+          ></SmallOptionBoard>
+        </Grid>
+      </div> : <div />
+      }
+
+      {learnOnline ? <div>
+        <Grid item className={classes.item}>
+          <h2>I want to learn ....</h2>
+          <BigOption text="Science & Mathematics"></BigOption>
+          <BigOption text="Arts & Humanities"></BigOption>
+          <BigOption text="Anything. Surprise me!"></BigOption>
+        </Grid>
+        <Grid item className={classes.item}>
+          <h2>Topics that I want to dive in...</h2>
+          <SmallOptionBoard items={[
+            {text: "Web Development", image: images.webdev},
+            {text: "Art & Design",    image: images.art},
+            {text: "Economics",       image: images.fed},
+          ]}>
+          </SmallOptionBoard>
+        </Grid>
+      </div> : <div />
+      }
+
+      {donate ? <div>
+        <Grid item className={classes.item}>
+          <h2>Causes I want to donate ...</h2>
+          <BigOption text="Migrant workers in need"></BigOption>
+          <BigOption text="Support World Health Organization"></BigOption>
+          <BigOption text="Severely affected families and seniors"></BigOption>
+        </Grid>
+        <Grid item className={classes.item}>
+          <h2>Topics that I want to dive in...</h2>
+          <SmallOptionBoard items={[
+            {text: "The Courage Fund",        image: images.courageFund},
+            {text: "The Sayang Sayang Fund",  image: images.sayangsayang},
+            {text: "Coronavirus Relief Fund", image: images.reliefFund},
+          ]}>
+          </SmallOptionBoard>
+        </Grid>
+      </div> : <div />
+      }
+
+      <Grid item className={classes.item}>
+          <Button component={Link} to="/start-day">Confirm</Button>
+      </Grid>
+        
+    </Grid>
+    </Fade>
+  );
+}
+
+function BigOptionBoard(props) {
+  const classes = useStyles();
+  return (
+    <div>
+    { props.items.map(item => {
+        return (
+            <SmallOption text={item.text} image={item.image} xs={4} ></SmallOption>
+        )
+    })}
+    </div>
+  )
 }
 
 function BigOption(props) {
-    const classes = useStyles();
-    const { text, pic, option, setOption } = props;    
-    return (
-    <Card
-        container
-        className={classes.card}
-        style={{
-            backgroundColor: option ? "#AAAAAA" : "#FFFFFF"
-        }}
+  const classes = useStyles();
+  const { text, pic, option, setOption } = props;    
+  return (
+  <Card
+    container
+    className={classes.card}
+    style={{
+        backgroundColor: option ? "#AAAAAA" : "#FFFFFF"
+    }}
+  >
+    <ButtonBase 
+      className={classes.buttonBase}
+      // onClick={e => setOption(!option)}
     >
-        <ButtonBase 
-            className={classes.buttonBase}
-            // onClick={e => setOption(!option)}
-        >
-            <CardActionArea>
-                <CardContent>
-
-                        <p style={{
-                            color: option ? "#FFFFFF" : "#000000" 
-                        }}>
-                            {text}
-                        </p>
-
-                </CardContent>
-            </CardActionArea>
-        </ButtonBase>
-    </Card>
-    )
+      <CardActionArea>
+        <CardContent>
+          <p style={{
+              color: option ? "#FFFFFF" : "#000000" 
+          }}>
+              {text}
+          </p>
+        </CardContent>
+      </CardActionArea>
+    </ButtonBase>
+  </Card>
+  )
 }
 
 function SmallOptionBoard(props) {
