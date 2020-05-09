@@ -11,8 +11,9 @@ function App() {
     <div>
       <ul>
         <li><a href="/entry">Entry</a></li>
-        <li><a href="/configure">Configure</a></li>
-        <li><a href="/start-day">Start-day</a></li>
+        <li><a href="/choose-activities">Activities</a></li>
+        <li><a href="/personalize">Personalization</a></li>
+        <li><a href="/start-day">NewDay</a></li>
       </ul>
     
     <Router>
@@ -23,6 +24,7 @@ function App() {
         <Route path="/start-day" component={NewDay} />
       </Switch>
     </Router>
+
     </div>
   );
 }
