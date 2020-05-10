@@ -51,20 +51,24 @@ const useStyles = makeStyles(theme => ({
 function DayCard(props) {
   const classes = useStyles();
   const now = new Date().getHours();
-  const [image, setImage] = useState(images.moon);
-  const [greeting, setGreeting] = useState('Good morning!');
-  if (now > 18) { 
-    setImage(images.moon);
-    setGreeting('Good evening!');
-  }
-  else if (now > 12) { 
-    setImage(images.sunCloud); 
-    setGreeting('Good afternoon!');
-  }
-  else if (now > 6) { 
-    setImage(images.sun); 
-    setGreeting('Good morning');
-  }
+
+  const nowImage = now > 18 ? images.sun : now > 12 ? images.sunCloud : now > 6 ? images.sun : images.moon;
+  const nowGreeting = now > 18 ? 'Good evening!' : now > 12 ? 'Good afternoon!' : now > 6 ? 'Good morning' : 'Good morning';
+
+  const [image, setImage] = useState(nowImage);
+  const [greeting, setGreeting] = useState(nowGreeting);
+  // if (now > 18) { 
+  //   setImage(images.moon);
+  //   setGreeting('Good evening!');
+  // }
+  // else if (now > 12) { 
+  //   setImage(images.sunCloud); 
+  //   setGreeting('Good afternoon!');
+  // }
+  // else if (now > 6) { 
+  //   setImage(images.sun); 
+  //   setGreeting('Good morning');
+  // }
 
   return (
     <Card
@@ -116,7 +120,7 @@ function NewDay(props) {
             backgroundColor: "#f3f3f3"
         }}
       >   
-        {/* <DayCard /> */}
+        <DayCard />
 
         <Grid item className={classes.item}>
             <h1 style={{color: "#333333"}}>Start your day</h1>
