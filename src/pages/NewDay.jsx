@@ -116,7 +116,7 @@ function NewDay(props) {
             backgroundColor: "#f3f3f3"
         }}
       >   
-        <DayCard />
+        {/* <DayCard /> */}
 
         <Grid item className={classes.item}>
             <h1 style={{color: "#333333"}}>Start your day</h1>
@@ -126,7 +126,7 @@ function NewDay(props) {
             <CardActionArea>
               <ButtonBase onClick={_ => setBibimbap(!bibimbap)} style={{width: '100%'}}>
               <CardContent>
-                <p>Make Bibimbap</p>
+                <h3>Let's make some Bibimbap</h3>
               </CardContent>
               </ButtonBase>
             </CardActionArea>

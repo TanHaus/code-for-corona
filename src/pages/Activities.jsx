@@ -29,7 +29,7 @@ function ActivityCard(props) {
     <Card
       container
       style={{
-          backgroundColor: activity ? "#5e96ae" : "#FFFFFF"
+          background: activity ? 'linear-gradient(45deg, #a1c4fd 30%, #c2e9fb 90%)' : "#FFFFFF"
       }}
       className={classes.card}
     >
@@ -49,7 +49,8 @@ function ActivityCard(props) {
       />
       <CardContent>
           <p style={{
-              color: activity ? "#FFFFFF" : "#000000" 
+              color: activity ? "#FFFFFF" : "#000000",
+              fontWeight: "bold"
           }}>
               {name}
           </p>
@@ -127,25 +128,25 @@ function Activities() {
       }}
     >   
       <Grid item className={classes.item}>
-        <h1>Choose your activities</h1>
-        <p>as many as you like</p>
+        <h1 style={{margin: "5px", color: "#333333", fontSize: "30px"}}>Choose your activities</h1>
+        <p style={{margin: "5px", color: "#333333", fontSize: "24px"}}>as many as you like</p>
         <br/>
-        <p>(For the demo, only certain items will work)</p>
+        <p style={{margin: "5px", color: "#333333"}}>(For the demo, only certain items will work)</p>
       </Grid>
       <Grid item className={classes.item}>
-        <h2>Leisure</h2>
+        <h2  style={{margin: "5px", color: "#333333"}}>Leisure</h2>
         <ActivityCard name="Cook a dish" activity={cookDish} setActivity={setCookDish} pic={images.cookDish} />
         <ActivityCardDummy name="Watch a movie" pic={images.popcorn}  />
         <ActivityCardDummy name="Read a book" pic={images.book} />
       </Grid>
       <Grid item className={classes.item}>
-        <h2>Self-improvement</h2>
+        <h2  style={{margin: "5px", color: "#333333"}}>Self-improvement</h2>
         <ActivityCardDummy name="Do a workout" pic={images.dumbbell}/>
         <ActivityCard name="Take a free online course" activity={learnOnline} setActivity={setLearnOnline} pic={images.eLearnring}/>
         <ActivityCardDummy name="Clean your room" pic={images.broom}/>
       </Grid>
       <Grid item className={classes.item}>
-        <h2>Human Interaction</h2>
+        <h2  style={{margin: "5px", color: "#333333"}}>Human Interaction</h2>
         <ActivityCardDummy name="Have a chat with family and friends" pic={images.chat} />
         <ActivityCard name="Make a donation" activity={donate} setActivity={setDonate} pic={images.donation} />
         <ActivityCardDummy name="Volunteer" pic={images.volunteer} />

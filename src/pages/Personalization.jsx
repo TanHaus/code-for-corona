@@ -47,7 +47,13 @@ function Personalization(props) {
       }}
     >   
       <Grid item className={classes.item}>
-        <h1>Personalize your activities</h1>
+        <h1 style={{
+          margin: "5px", 
+          color: "#333333", 
+          fontSize: "30px", 
+          // fontFamily: "Open Sans, Helvetica, Arial, sans-serif",
+          paddingTop: "10px"
+          }}>Personalize your activities</h1>
         <br/>
         <p>(For the demo, only certain items will work)</p>
       </Grid>
@@ -56,8 +62,8 @@ function Personalization(props) {
         <Grid item className={classes.item}>
           <h2>I want to cook ....</h2>
           <BigOption text="Asian cuisine" option={asian} setOption={setAsian} />
-          <BigOption text="Western cuisine" />
-          <BigOption text="Anything. Surprise me!" />
+          <BigOptionDummy text="Western cuisine" />
+          <BigOptionDummy text="Anything. Surprise me!" />
         </Grid>
 
         <Collapse in={asian} timeout={1000}><Fade in={asian} timeout={1000} style={{ transitionDelay: 200}}>
@@ -78,8 +84,8 @@ function Personalization(props) {
       {learnOnline ? <div>
         <Grid item className={classes.item}>
           <h2>I want to learn ....</h2>
-          <BigOption text="Science & Mathematics" />
-          <BigOption text="Arts & Humanities" />
+          <BigOptionDummy text="Science & Mathematics" />
+          <BigOptionDummy text="Arts & Humanities" />
           <BigOption text="Anything. Surprise me!" option={mooc} setOption={setMooc} />
         </Grid>
 
@@ -101,8 +107,8 @@ function Personalization(props) {
       {donate ? <div>
         <Grid item className={classes.item}>
           <h2>Causes I want to donate to ...</h2>
-          <BigOption text="Migrant workers in need" />
-          <BigOption text="Support World Health Organization" />
+          <BigOptionDummy text="Migrant workers in need" />
+          <BigOptionDummy text="Support World Health Organization" />
           <BigOption text="Severely affected families and seniors" option={family} setOption={setFamily} />
         </Grid>
 
@@ -156,7 +162,7 @@ function BigOption(props) {
     container
     className={classes.card}
     style={{
-        backgroundColor: option ? "#AAAAAA" : "#FFFFFF"
+        background: option ? 'linear-gradient(45deg, #a1c4fd 30%, #c2e9fb 90%)' : "#FFFFFF"
     }}
   >
     <ButtonBase 
@@ -166,10 +172,33 @@ function BigOption(props) {
       <CardActionArea>
         <CardContent>
           <p style={{
-              color: option ? "#FFFFFF" : "#000000" 
+              color: option ? "#FFFFFF" : "#000000",
+              fontFamily: "Muli, Futura, Helvetica, Arial, sans-serif"
           }}>
               {text}
           </p>
+        </CardContent>
+      </CardActionArea>
+    </ButtonBase>
+  </Card>
+  )
+}
+
+function BigOptionDummy(props) {
+  const classes = useStyles();
+  const { text, pic } = props;    
+  return (
+  <Card
+    container
+    className={classes.card}
+    style={{
+        background: "#FFFFFF"
+    }}
+  >
+    <ButtonBase className={classes.buttonBase}>
+      <CardActionArea>
+        <CardContent>
+          <p style={{ color: "#000000", fontFamily: "Muli, Futura, Helvetica, Arial, sans-serif" }}>{text}</p>
         </CardContent>
       </CardActionArea>
     </ButtonBase>
