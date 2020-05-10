@@ -50,25 +50,13 @@ const useStyles = makeStyles(theme => ({
 
 function DayCard(props) {
   const classes = useStyles();
-  const now = new Date().getHours();
 
+  const now = new Date().getHours();
   const nowImage = now > 18 ? images.sun : now > 12 ? images.sunCloud : now > 6 ? images.sun : images.moon;
   const nowGreeting = now > 18 ? 'Good evening!' : now > 12 ? 'Good afternoon!' : now > 6 ? 'Good morning' : 'Good morning';
 
   const [image, setImage] = useState(nowImage);
   const [greeting, setGreeting] = useState(nowGreeting);
-  // if (now > 18) { 
-  //   setImage(images.moon);
-  //   setGreeting('Good evening!');
-  // }
-  // else if (now > 12) { 
-  //   setImage(images.sunCloud); 
-  //   setGreeting('Good afternoon!');
-  // }
-  // else if (now > 6) { 
-  //   setImage(images.sun); 
-  //   setGreeting('Good morning');
-  // }
 
   return (
     <Card
@@ -101,6 +89,8 @@ function DayCard(props) {
 
 function NewDay(props) {
   const classes = useStyles();
+  const colors = JSON.parse(localStorage.getItem("colors"));
+  const [bgColor, setBgColor] = useState(JSON.parse(localStorage.getItem("bgColor")));
   const [bibimbap, setBibimbap] = useState(false);
   const [ml, setMl] = useState(false);
   // useEffect(() => {
@@ -117,7 +107,7 @@ function NewDay(props) {
         justify="center"
         alignItems="center"
         style={{
-            backgroundColor: "#f3f3f3"
+            backgroundColor: colors[bgColor]
         }}
       >   
         <DayCard />

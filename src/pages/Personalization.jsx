@@ -30,6 +30,9 @@ function Personalization(props) {
   // useEffect(_ => { window.scrollTo(0,0); })
   const classes = useStyles();
   const activities = JSON.parse(localStorage.getItem("activities"));
+  const colors = JSON.parse(localStorage.getItem("colors"));
+  const [bgColor, setBgColor] = useState(JSON.parse(localStorage.getItem("bgColor")));
+
   const {cookDish, watchMovie, readBook, workOut, learnOnline, cleanRoom, chatFnF, donate, volunteer} = activities;
   const [asian, setAsian] = useState(false);
   const [mooc, setMooc] = useState(false);
@@ -43,7 +46,7 @@ function Personalization(props) {
       justify="center"
       alignItems="center"
       style={{
-        backgroundColor: "#f3f3f3"
+        backgroundColor: colors[bgColor]
       }}
     >   
       <Grid item className={classes.item}>

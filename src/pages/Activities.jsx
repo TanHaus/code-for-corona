@@ -132,6 +132,8 @@ function Activities() {
   const handleSubmitForm = () => {
     const activities = { cookDish, learnOnline, donate };
     localStorage.setItem("activities", JSON.stringify(activities));
+    localStorage.setItem("colors", JSON.stringify(colors));
+    localStorage.setItem("bgColor", JSON.stringify(bgColor));
   }
 
   return (
