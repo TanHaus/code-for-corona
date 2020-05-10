@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme => ({
 
 function ActivityCard(props) {
   const classes = useStyles();
-  const { name, activity, setActivity } = props;
+  const { name, activity, setActivity, bgColor, setBgColor } = props;
   const pic = props.pic || images.default;
   return (
     <Card
@@ -35,7 +35,14 @@ function ActivityCard(props) {
     >
     <ButtonBase 
       className={classes.buttonBase}
-      onClick={e => setActivity(!activity)}
+      onClick={e => {
+        if (setBgColor) {
+          if (activity) setBgColor(Math.max(0,bgColor-1))
+          else setBgColor(Math.min(bgColor+1,5))
+          // setBgColor(bgColor+1)
+        }
+        setActivity(!activity)
+      }}
     >
     <CardActionArea>
       <CardMedia 
@@ -111,6 +118,17 @@ function Activities() {
   const [donate, setDonate]           = useState(activities.donate);
   // const [volunteer, setVolunteer]     = useState(activities.volunteer);
 
+  const [bgColor, setBgColor]         = useState(0);
+  const colors = [
+    "#f3f3f3",
+    '#DDFFFF',
+    '#CAFEFE',
+    '#FFFFB5',
+    '#FFFFAF',
+    '#FEF2D9',
+  ];
+  // function getColor(index) { return colors[index] };
+
   const handleSubmitForm = () => {
     const activities = { cookDish, learnOnline, donate };
     localStorage.setItem("activities", JSON.stringify(activities));
@@ -124,7 +142,7 @@ function Activities() {
       justify="center"
       alignItems="center"
       style={{
-        backgroundColor: "#f3f3f3"
+        backgroundColor: colors[bgColor]
       }}
     >   
       <Grid item className={classes.item}>
@@ -135,20 +153,20 @@ function Activities() {
       </Grid>
       <Grid item className={classes.item}>
         <h2  style={{margin: "5px", color: "#333333"}}>Leisure</h2>
-        <ActivityCard name="Cook a dish" activity={cookDish} setActivity={setCookDish} pic={images.cookDish} />
+        <ActivityCard name="Cook a dish" activity={cookDish} setActivity={setCookDish} pic={images.cookDish} bgColor={bgColor} setBgColor={setBgColor} />
         <ActivityCardDummy name="Watch a movie" pic={images.popcorn}  />
         <ActivityCardDummy name="Read a book" pic={images.book} />
       </Grid>
       <Grid item className={classes.item}>
         <h2  style={{margin: "5px", color: "#333333"}}>Self-improvement</h2>
         <ActivityCardDummy name="Do a workout" pic={images.dumbbell}/>
-        <ActivityCard name="Take a free online course" activity={learnOnline} setActivity={setLearnOnline} pic={images.eLearnring}/>
+        <ActivityCard name="Take a free online course" activity={learnOnline} setActivity={setLearnOnline} pic={images.eLearnring} bgColor={bgColor} setBgColor={setBgColor} />
         <ActivityCardDummy name="Clean your room" pic={images.broom}/>
       </Grid>
       <Grid item className={classes.item}>
         <h2  style={{margin: "5px", color: "#333333"}}>Human Interaction</h2>
         <ActivityCardDummy name="Have a chat with family and friends" pic={images.chat} />
-        <ActivityCard name="Make a donation" activity={donate} setActivity={setDonate} pic={images.donation} />
+        <ActivityCard name="Make a donation" activity={donate} setActivity={setDonate} pic={images.donation} bgColor={bgColor} setBgColor={setBgColor} />
         <ActivityCardDummy name="Volunteer" pic={images.volunteer} />
       </Grid>
       <Grid item className={classes.item}>
